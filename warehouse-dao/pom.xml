@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>com.warehouse</groupId>
-  <artifactId>warehose-dao</artifactId>
+  <artifactId>warehouse-dao</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>warehose-dao</name>
   <packaging>jar</packaging>
