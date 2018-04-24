@@ -12,7 +12,32 @@
   <artifactId>warehouse-web</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <build>
-    <finalName>warehouse-web</finalName>
-  </build>
+  <!-- 依赖管理 -->
+    <dependencies>
+        <dependency>
+            <groupId>com.warehouse</groupId>
+            <artifactId>warehouse-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- JSP相关 -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

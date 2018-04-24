@@ -15,4 +15,44 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.warehouse</groupId>
+  		<artifactId>warehouse-mapper</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<!-- Spring -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-beans</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aspects</artifactId>
+    </dependency>
+  </dependencies>
+  <build>
+	<plugins>
+	    <plugin>
+	        <artifactId>maven-assembly-plugin</artifactId>
+	        <configuration>
+	            <descriptorRefs>
+	                <descriptorRef>jar-with-dependencies</descriptorRef>
+	            </descriptorRefs>
+	        </configuration>
+	    </plugin>
+	</plugins>
+  </build>
 </project>

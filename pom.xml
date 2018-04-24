@@ -8,7 +8,6 @@
   <description>warehouse</description>
   <modules>
     <module>warehouse-utils</module>
-    <module>warehouse-dao</module>
     <module>warehouse-service</module>
     <module>warehouse-bean</module>
     <module>warehouse-web</module>
