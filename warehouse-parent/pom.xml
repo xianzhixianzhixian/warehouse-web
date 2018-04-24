@@ -29,6 +29,12 @@
   </properties>
   <dependencyManagement>
         <dependencies>
+        	<!-- 工具类 -->
+	       <dependency>
+	 			<groupId>com.warehouse</groupId>
+	           <artifactId>warehouse-utils</artifactId>
+	           <version>0.0.1-SNAPSHOT</version>
+	 		</dependency>
             <!-- 时间操作组件 -->
             <dependency>
                 <groupId>joda-time</groupId>

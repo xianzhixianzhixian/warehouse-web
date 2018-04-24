@@ -31,10 +31,6 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.github.miemiedev</groupId>
-            <artifactId>mybatis-paginator</artifactId>
-        </dependency>
         <!-- MySql -->
         <dependency>
             <groupId>mysql</groupId>
