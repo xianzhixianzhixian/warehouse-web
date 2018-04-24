@@ -9,7 +9,7 @@
     <relativePath>../warehouse-parent/pom.xml</relativePath>
   </parent>
   <groupId>com.warehouse</groupId>
-  <artifactId>warehouse-service</artifactId>
+  <artifactId>warehouse-mapper</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <properties>
