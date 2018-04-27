@@ -13,6 +13,7 @@
     <module>warehouse-web</module>
     <module>warehouse-mapper</module>
     <module>warehouse-parent</module>
+    <module>warehouse-common</module>
   </modules>
   <build>
         <plugins>

@@ -21,6 +21,16 @@
   		<artifactId>warehouse-mapper</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>com.warehouse</groupId>
+  		<artifactId>warehouse-utils</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.warehouse</groupId>
+  		<artifactId>warehouse-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   	<!-- Spring -->
     <dependency>
         <groupId>org.springframework</groupId>

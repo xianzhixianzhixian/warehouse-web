@@ -16,3 +16,8 @@
 	height:300px;
 	margin:75px 100px;
 }
+
+.login_return_message{
+	font-size: 30px;
+	margin: 15px 60px;
+}
