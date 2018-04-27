@@ -24,7 +24,7 @@ public class PageController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/login" , method = RequestMethod.POST)
-	public WResponse index(Userinfo userinfo) {
+	public WResponse loginCheck(Userinfo userinfo) throws Exception {
 		
 		Integer level=userLoginService.checkUser(userinfo);
 		userinfo.setLevel(level);

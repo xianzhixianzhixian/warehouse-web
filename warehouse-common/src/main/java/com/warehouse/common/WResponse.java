@@ -1,10 +1,12 @@
 package com.warehouse.common;
 
+import java.io.Serializable;
+
 /**
  * 后台返回数据用到的类
  * 2018.4.27
  */
-public class WResponse {
+public class WResponse implements Serializable{
 
 	private String message;
 	private Object object;

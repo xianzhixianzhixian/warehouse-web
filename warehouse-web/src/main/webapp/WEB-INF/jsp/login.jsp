@@ -47,12 +47,10 @@
 	    		$.ajax({
 		    		url: "login",
 		    		type: "post",
-		    		contentType:"application/json;charset=utf-8",
 		    		data: {
 		    			username: username,
 		    			password: password
 		    		},
-		    		dataType: "json", //这里的dataType是指后端返回值的类型
 		    		success: function(response){
 		            	if(response.message=="success"){
 		            		alert("success");
