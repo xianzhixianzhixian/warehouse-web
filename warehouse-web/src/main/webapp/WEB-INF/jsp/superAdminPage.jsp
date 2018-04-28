@@ -11,17 +11,17 @@
 	<body>
 		<div class="div_total">
 			<div class="div_left">
-				<div class="navbar navbar-duomi navbar-static-top" role="navigation">
-					<div class="container-fluid" style="width: 20%;">
-						<div class="navbar-header">
-							<font class="navbar-brand" id="logo">&nbsp;&nbsp;&nbsp;&nbsp;后台管理系统</font>
+				<div class="navbar navbar-duomi navbar-static-top" style="height: 15%;" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header text-center" style="margin:7% 17%;">
+							<font class="navbar-brand" id="logo">仓库管理系统</font>
 						</div>
 					</div>
 				</div>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-14 ">
-							<ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+							<ul id="main-nav" class="nav nav-tabs nav-stacked">
 								<li>
 									<a href="#fundationtalInfoSetting" class="nav-header collapsed" data-toggle="collapse">
 										<i class="glyphicon glyphicon-th-list"></i> 基本信息管理
@@ -85,6 +85,7 @@
 			</div>
 			<div class="div_right">
 				<div class="div_top">
+					用户您好，欢迎登陆本系统
 				</div>
 				<div class="div_bottom">
 				</div>

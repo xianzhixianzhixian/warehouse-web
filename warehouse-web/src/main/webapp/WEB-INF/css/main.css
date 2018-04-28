@@ -9,21 +9,22 @@
 }
 
 .div_left{
-	width: 20%;
+	width: 25%;
 	height: 100%;
 	float: left;
 }
 
 .div_right{
-	width: 80%;
+	width: 75%;
 	height: 100%;
 	float: left;
 }
 
 .div_top{
 	margin: 0 0;
-	height: 25%;
+	height: 15%;
 	width: 100%;
+	background-color: pink;
 }
 
 .div_bottom{
@@ -37,7 +38,7 @@
 
 #main-nav.nav-tabs.nav-stacked > li > a {
 	padding: 10px 8px;
-	font-size: 12px;
+	font-size: 14px;
 	color: #4A515B;
 	background: #E9E9E9;
 	background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
@@ -80,7 +81,7 @@
 
 /*定义二级菜单样式*/
 .secondmenu a {
-	font-size: 10px;
+	font-size: 14px;
 	color: #4A515B;
 	text-align: center;
 }
