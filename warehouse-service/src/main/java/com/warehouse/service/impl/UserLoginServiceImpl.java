@@ -19,8 +19,7 @@ public class UserLoginServiceImpl implements UserLoginService{
 	private UserinfoMapper userinfoMapper;
 	
 	@Override
-	public Integer checkUser(Userinfo user) {
-		// TODO Auto-generated method stub
+	public Integer checkUserGetLevel(Userinfo user) {
 		Integer level=-1;
 		UserinfoExample example=new UserinfoExample();
 		Criteria criteria=example.createCriteria();
@@ -33,5 +32,4 @@ public class UserLoginServiceImpl implements UserLoginService{
 		}
 		return level;
 	}
-
 }

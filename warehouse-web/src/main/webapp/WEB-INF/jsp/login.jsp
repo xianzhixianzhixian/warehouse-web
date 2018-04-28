@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8"%>
+<%@ page language="java" import="com.warehouse.utils.*" %>
 <html>
 	<head>
 		<title>仓储管理系统登陆页面</title> 
@@ -7,6 +8,7 @@
 		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<link href="css/login.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="js/login.js"></script>
     	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
 	</head>
 	<body>
@@ -34,32 +36,35 @@
 				</form>
 				<label id="login_return_message" class="login_label"></label>
 			</div>
+			<script type="text/javascript">
+				function login() {
+					var username=$("#inputUsername").val();
+					var password=$("#inputPassword").val();
+					
+					if(username=='' || username==null
+						|| password=='' || password==null){
+						alert("请输入完整的用户名和密码！");
+					}else{
+						$.ajax({
+				    		url: "login/userLogin",
+				    		type: "post",
+				    		data: {
+				    			username: username,
+				    			password: password
+				    		},
+				    		success: function(response){
+				            	if(response.message=="success"){
+				            		$("#login_return_message").text("登陆成功,1S后跳转");
+				            		window.location.href="login/userPageSelect?username="+response.object.username+"&level="+response.object.level;
+				            	}else{
+				            		$("#login_return_message").text("用户名或密码错误");
+				            		return;
+				            	}
+				            }
+				    	});
+					}
+				}
+			</script>
 		</div>
 	</body>
-	<script type="text/javascript">
-	    function login() {
-			var username=$("#inputUsername").val();
-	    	var password=$("#inputPassword").val();
-	    	if(username=='' || username==null
-	    		|| password=='' || password==null){
-	    		alert("请输入完整的用户名和密码！");
-	    	}else{
-	    		$.ajax({
-		    		url: "login",
-		    		type: "post",
-		    		data: {
-		    			username: username,
-		    			password: password
-		    		},
-		    		success: function(response){
-		            	if(response.message=="success"){
-		            		alert("success");
-		            	}else{
-		            		$("#login_return_message").text("用户名或密码错误");
-		            	}
-		            }
-		    	});
-	    	}
-	    }
-	</script>
 </html>
