@@ -1,12 +1,13 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ page language="java" import="com.warehouse.utils.*" %>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>仓储管理系统登陆页面</title> 
-		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css"/>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 		<link href="css/login.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="js/login.js"></script>
 	</head>
@@ -33,37 +34,37 @@
 					        style="font-size:16px;font-weight: 700;">取消</button>
 					</div>
 				</form>
-				<label id="login_return_message" class="login_label"></label>
+				<label id="login_return_message" class="login_label text-celter"></label>
 			</div>
-			<script type="text/javascript">
-				function login() {
-					var username=$("#inputUsername").val();
-					var password=$("#inputPassword").val();
-					
-					if(username=='' || username==null
-						|| password=='' || password==null){
-						alert("请输入完整的用户名和密码！");
-					}else{
-						$.ajax({
-				    		url: "login/userLogin",
-				    		type: "post",
-				    		data: {
-				    			username: username,
-				    			password: password
-				    		},
-				    		success: function(response){
-				            	if(response.message=="success"){
-				            		$("#login_return_message").text("登陆成功，1S后进行跳转");
-				            		window.location.href="login/userPageSelect?username="+response.object.username+"&level="+response.object.level;
-				            	}else{
-				            		$("#login_return_message").text("用户名或密码错误");
-				            		return;
-				            	}
-				            }
-				    	});
-					}
-				}
-			</script>
 		</div>
 	</body>
+	<script type="text/javascript">
+		function login() {
+			var username=$("#inputUsername").val();
+			var password=$("#inputPassword").val();
+			
+			if(username=='' || username==null
+				|| password=='' || password==null){
+				$("#login_return_message").text("请输入完整的用户名和密码！");
+			}else{
+				$.ajax({
+		    		url: "login/userLogin",
+		    		type: "post",
+		    		data: {
+		    			username: username,
+		    			password: password
+		    		},
+		    		success: function(response){
+		            	if(response.message=="success"){
+		            		$("#login_return_message").text("登陆成功，1S后进行跳转");
+		            		window.location.href="login/userPageSelect?username="+response.object.username+"&level="+response.object.level;
+		            	}else{
+		            		$("#login_return_message").text("用户名或密码错误");
+		            		return;
+		            	}
+		            }
+		    	});
+			}
+		}
+	</script>
 </html>

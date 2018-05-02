@@ -3,9 +3,9 @@
 <html>
 	<head>
 		<title> 后台管理页面 </title>
-		<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-		<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="../js/jquery-2.1.1.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
 		<link href="../css/mainPage.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="../js/login.js"></script>
 	</head>
@@ -72,7 +72,7 @@
 								<%
 									}
 								%>
-									<li><a href="#" target="mainFrame"><i class="glyphicon glyphicon-text-size"></i> 用户个人密码修改</a></li>
+									<li><a href="${pageContext.request.contextPath }/changePassword" target="function_frame"><i class="glyphicon glyphicon-certificate"></i> 用户个人密码修改</a></li>
 								</ul>
 							</li>
 							<li>

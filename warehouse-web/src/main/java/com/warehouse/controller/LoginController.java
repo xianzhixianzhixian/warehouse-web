@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.warehouse.bean.Userinfo;
+import com.warehouse.common.WMessage;
 import com.warehouse.common.WResponse;
 import com.warehouse.service.UserLoginService;
 
@@ -39,9 +40,9 @@ public class LoginController {
 		userinfo.setPassword("");
 		WResponse response=new WResponse();
 		response.setObject(userinfo);
-		response.setMessage("success");
+		response.setMessage(WMessage.MSG_SUCCESS);
 		if(level==-1) {
-			response.setMessage("fail");
+			response.setMessage(WMessage.MSG_FAIL);
 		}
 		return response;
 	}

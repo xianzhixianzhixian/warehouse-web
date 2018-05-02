@@ -315,4 +315,10 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <!-- 根据用户名更新密码 -->
+  <update id="updatePasswordByUsername" parameterType="com.warehouse.bean.Userinfo">
+  	update userinfo
+  	set password = #{password,jdbcType=VARCHAR}
+  	where username = #{username,jdbcType=VARCHAR}
+  </update>
 </mapper>

@@ -93,4 +93,11 @@ public interface UserinfoMapper {
      * @mbg.generated Wed Apr 25 17:07:20 CST 2018
      */
     int updateByPrimaryKey(Userinfo record);
+    
+    /**
+     * 根据用命名更新密码
+     * @param record
+     * @return
+     */
+    int updatePasswordByUsername(Userinfo record);
 }

@@ -13,5 +13,5 @@ public interface UserLoginService{
 	 * @param user
 	 * @return
 	 */
-	public Integer checkUserGetLevel(Userinfo user);
+	public Integer checkUserGetLevel(Userinfo user) throws Exception;
 }
