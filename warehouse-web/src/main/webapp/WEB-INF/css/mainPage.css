@@ -3,9 +3,8 @@
 	padding:0;
 }
 
-.div_total{
-	width: 100%;
-	height: 100%;
+html,body{
+	height:100%;
 }
 
 .div_left{
@@ -21,30 +20,32 @@
 }
 
 .div_top{
-	margin: 0 0;
 	height: 15%;
 	width: 100%;
-	background-color: black;
-	position:relative;
+	background-color: #222222;
 }
 
-.div_top_inner{
-	width: 75%;
-	height: 75%;
-	position:absolute;
-	top: 12px;
-	left: 135px;
-	font-size: 25px;
+.div_top p{
+	position: absolute;
+	top: 5%;
+	left: 45%;
 	color: white;
-	text-align: center;
-	line-height: 55px;
+	font-size: 25px;
 }
 
 .div_bottom{
-	height: 75%;
-	width: 100%;
+	margin: 15px auto;
+	height: 80%px;
+	width: 95%;
+	background-color: pink;
 }
 
+.jsp_frame{
+	width: 100%;
+	height: 100%;
+	frameborder: no;
+	border: 0px;
+}
 
 #main-nav {
 }
