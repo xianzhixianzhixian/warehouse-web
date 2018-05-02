@@ -1,5 +1,7 @@
 package com.warehouse.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +25,12 @@ public class LoginController {
 	@Autowired
 	private UserLoginService userLoginService;
 	
+	/**
+	 * 返回登陆结果信息
+	 * @param userinfo
+	 * @return
+	 * @throws Exception
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/userLogin" , method = RequestMethod.POST)
 	public WResponse userLogin(Userinfo userinfo) throws Exception {
@@ -39,18 +47,20 @@ public class LoginController {
 		return response;
 	}
 	
-	@ResponseBody
+	/**
+	 * 判定用户等级，并返回视图
+	 * @param username
+	 * @param level
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/userPageSelect", method = RequestMethod.GET)
-	public String userPageSelect(@RequestParam("username") String username,@RequestParam("level") Integer level) throws Exception {
+	public String userPageSelect(@RequestParam("username") String username,@RequestParam("level") Integer level,HttpSession session) 
+			throws Exception {
 		
-		if (level==1) {
-			return "superAdminPage";
-		}else if(level==2) {
-			
-			return "adminPage";
-		}else if(level==3){
-			return "userPage";
-		}
-		return "index";
+		session.setAttribute("username", username);
+		session.setAttribute("level", level);
+		return "applicationPage";
 	}
 }

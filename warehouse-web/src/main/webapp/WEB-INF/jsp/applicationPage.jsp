@@ -5,8 +5,8 @@
 		<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 		<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<link href="css/main.css" rel="stylesheet" type="text/css"/>
-		<script type="text/javascript" src="js/login.js"></script>
+		<link href="../css/mainPage.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="../js/login.js"></script>
 	</head>
 	<body>
 		<div class="div_total">
@@ -62,8 +62,16 @@
 										<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 									</a>
 									<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<%
+										String username=(String)session.getAttribute("username");
+										Integer level=(Integer)session.getAttribute("level");
+										if(level<=2){
+									%>
 										<li><a href="#"><i class="glyphicon glyphicon-user"></i> 仓库员工管理</a></li>
 										<li><a href="#"><i class="glyphicon glyphicon-ok"></i> 员工权限设置</a></li>
+									<%
+										}
+									%>
 										<li><a href="#"><i class="glyphicon glyphicon-text-size"></i> 用户个人密码修改</a></li>
 									</ul>
 								</li>
@@ -72,7 +80,7 @@
 										<i class="glyphicon glyphicon-qrcode"></i> 关于系统
 										<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 									</a>
-									<ul id="aboutSystem" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<ul id="aboutSystem" class="nav nav-list collapse secondmenu">
 										<li class="text-center">仓库管理系统</li>
 										<li class="text-center">@CopyRight 2018</li>
 										<li class="text-center">com.warehouse.manager</li>
@@ -85,7 +93,20 @@
 			</div>
 			<div class="div_right">
 				<div class="div_top">
-					用户您好，欢迎登陆本系统
+					<div class="div_top_inner">
+						<%
+							String words="尊敬的";
+							if(level==1){
+								words+="超级管理员";
+							} else if(level==2){
+								words+="管理员";
+							} else if(level==3){
+								words+="用户";
+							}
+							words=words+username+"，欢迎使用本系统！";
+						%>
+						<p><%=words  %></p>
+					</div>
 				</div>
 				<div class="div_bottom">
 				</div>

@@ -24,7 +24,20 @@
 	margin: 0 0;
 	height: 15%;
 	width: 100%;
-	background-color: pink;
+	background-color: black;
+	position:relative;
+}
+
+.div_top_inner{
+	width: 75%;
+	height: 75%;
+	position:absolute;
+	top: 12px;
+	left: 135px;
+	font-size: 25px;
+	color: white;
+	text-align: center;
+	line-height: 55px;
 }
 
 .div_bottom{
