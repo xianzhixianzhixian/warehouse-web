@@ -1,4 +1,3 @@
-<%@page import="com.warehouse.bean.Userinfo"%>
 <%@ page pageEncoding="utf-8"%>
 <%@ page language="java" import="com.warehouse.utils.*" %>
 <!DOCTYPE html>
@@ -12,23 +11,23 @@
 	</head>
 	<body>
 		<div style="margin: 0px 35%;"><h2>仓库员工管理</h2></div>
+		<div class="div_button">
+			<button type="button" class="btn btn-default" onclick="add();">添加</button>
+			<button type="button" class="btn btn-default">修改</button>
+			<button type="button" class="btn btn-default">删除</button>
+		</div>
 		<div class="div_table">
 			<table id="usertable" class="table table-bordered table-hover">
 				<tr>
-					<th>用户名</th><th>权限</th><th>密码</th><th>备注</th><th>创建时间</th><th>修改时间</th><th>操作</th>
-<%-- 					<%
-						for(Userinfo user : ){
-					%>
-					<%
-						}
-					%> --%>
+					<th>用户名</th><th>权限</th><th>密码</th><th>备注</th><th>创建时间</th><th>修改时间</th>
 				</tr>
 			</table>
 		</div>
 	</body>
 	<script type="text/javascript">
-		function deletePerson(){
+		function add(){
 			var table=$("#usertable");
+			var addline="<tr><td></td><td></td><td></td><td></td><td></td><td></td></</tr>";
 			addline.appendTo(table);
 		}
 	</script>

@@ -1,5 +1,7 @@
 package com.warehouse.service;
 
+import java.util.List;
+
 import com.warehouse.bean.Userinfo;
 
 /**
@@ -24,4 +26,6 @@ public interface UserManageService {
 	 * @throws Exception
 	 */
 	public Boolean checkPasswdIsSameByUsername(Userinfo userinfo) throws Exception;
+	
+	
 }

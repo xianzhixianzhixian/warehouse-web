@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html,body{
+	height: 100%;
+}
+
+.div_button{
+	margin-left: 65%;
+}
+
+.div_table{
+	margin-top: 10px;
+	width: 100%;
+}
+
+.div_table table{
+	margin-left: 5%;
+	width: 80%;
+}

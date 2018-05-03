@@ -14,6 +14,7 @@
 		<div class="login panel panel-default">
 			<div class="login_internal">
 				<form id="login_form">
+					<h2 class="text-center">密码修改</h2>
 					<div class="form-group">
 						<label for="inputNewPwd">请输入新密码</label>
 						<input type="password" class="form-control" id="inputNewPwd" name="username" placeholder="请输入新密码"  required autofocus>
