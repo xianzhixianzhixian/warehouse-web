@@ -3,14 +3,12 @@ package com.warehouse.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.remoting.RemoteTimeoutException;
 import org.springframework.stereotype.Service;
 
 import com.warehouse.bean.Userinfo;
 import com.warehouse.bean.UserinfoExample;
 import com.warehouse.bean.UserinfoExample.Criteria;
 import com.warehouse.mapper.UserinfoMapper;
-import com.warehouse.service.UserLoginService;
 import com.warehouse.service.UserManageService;
 import com.warehouse.utils.MD5;
 

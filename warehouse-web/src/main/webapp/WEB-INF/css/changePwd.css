@@ -25,5 +25,6 @@
 .login_label{
 	width: 300px;
 	font-size:17px;
-	margin:30px 55px;
+	margin-top: 20px;
+	text-align: center;
 }
