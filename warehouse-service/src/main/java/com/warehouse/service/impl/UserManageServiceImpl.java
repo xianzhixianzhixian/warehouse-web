@@ -3,6 +3,7 @@ package com.warehouse.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.remoting.RemoteTimeoutException;
 import org.springframework.stereotype.Service;
 
 import com.warehouse.bean.Userinfo;
@@ -41,6 +42,28 @@ public class UserManageServiceImpl implements UserManageService {
 		}
 		
 		return false;
+	}
+
+	@Override
+	public Integer addPerson(Userinfo userinfo) throws Exception {
+		
+		userinfo.setPassword(MD5.getMD5(userinfo.getPassword()));
+		return userinfoMapper.insertSelective(userinfo);
+	}
+
+	@Override
+	public Boolean checkUserExists(String username) throws Exception {
+		
+		UserinfoExample example=new UserinfoExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andUsernameEqualTo(username);
+		Long count=userinfoMapper.countByExample(example);
+		
+		
+		if(count==0 || count==null) {
+			return Boolean.FALSE;
+		}
+		return Boolean.TRUE;
 	}
 	
 }

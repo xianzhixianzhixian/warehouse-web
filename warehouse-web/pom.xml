@@ -8,9 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../warehouse-parent/pom.xml</relativePath>
   </parent>
-  <groupId>com.warehouse</groupId>
   <artifactId>warehouse-web</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <!-- 依赖管理 -->
     <dependencies>

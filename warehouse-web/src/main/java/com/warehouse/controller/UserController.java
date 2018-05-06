@@ -21,9 +21,28 @@ import com.warehouse.utils.MD5;
 @Controller
 @RequestMapping("/person")
 public class UserController {
-
+	
 	@Autowired
 	private UserManageService userManageService;
+	
+	@ResponseBody
+	@RequestMapping(value = "/addPerson", method=RequestMethod.POST)
+	public WResponse addPerson(Userinfo userinfo) throws Exception {
+		WResponse response=new WResponse();
+		
+		if (userManageService.checkUserExists(userinfo.getUsername())) {
+			response.setMessage(WMessage.MSG_USER_EXISTS);
+			return response;
+		}
+		
+		Integer num=userManageService.addPerson(userinfo);
+		if(num<1) {
+			response.setMessage(WMessage.MSG_FAIL);
+		}else{
+			response.setMessage(WMessage.MSG_SUCCESS);
+		}
+		return response;
+	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/changePassword", method=RequestMethod.POST)

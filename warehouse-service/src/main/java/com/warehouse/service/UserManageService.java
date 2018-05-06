@@ -10,11 +10,17 @@ import com.warehouse.bean.Userinfo;
  */
 public interface UserManageService {
 
+	/**
+	 * 超级管理员添加新用户
+	 * @param userinfo
+	 * @return 
+	 * @throws Exception
+	 */
+	public Integer addPerson(Userinfo userinfo) throws Exception;
 	
 	/**
 	 * 更改用户密码
-	 * @param username
-	 * @param password
+	 * @param userinfo
 	 * @return
 	 */
 	public Integer updatePassword(Userinfo userinfo) throws Exception;
@@ -27,5 +33,10 @@ public interface UserManageService {
 	 */
 	public Boolean checkPasswdIsSameByUsername(Userinfo userinfo) throws Exception;
 	
-	
+	/**
+	 * 检查用户是否存在
+	 * @param username
+	 * @return
+	 */
+	public Boolean checkUserExists(String username) throws Exception;
 }

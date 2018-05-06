@@ -34,7 +34,7 @@
 					        style="font-size:16px;font-weight: 700;">取消</button>
 					</div>
 				</form>
-				<label id="login_return_message" class="login_label text-celter"></label>
+				<label id="login_return_message" class="login_label"></label>
 			</div>
 		</div>
 	</body>
