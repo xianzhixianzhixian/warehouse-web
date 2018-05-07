@@ -14,9 +14,14 @@ html,body{
 .div_table{
 	margin-top: 10px;
 	width: 100%;
+	text-align: center;
 }
 
 .div_table table{
-	margin-left: 5%;
+	margin: 10px auto;
 	width: 80%;
+}
+
+.div_table table tr th{
+	text-align: center;
 }
