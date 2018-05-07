@@ -322,4 +322,9 @@
   	set password = #{password,jdbcType=VARCHAR}
   	where username = #{username,jdbcType=VARCHAR}
   </update>
+  <!-- 根据用户名删除用户信息 -->
+  <delete id="deletePersonByUsername" parameterType="java.lang.String">
+  	delete from userinfo
+  	where username = #{username,jdbcType=VARCHAR}
+  </delete>
 </mapper>

@@ -51,8 +51,8 @@
 		    		url: "login/userLogin",
 		    		type: "post",
 		    		data: {
-		    			username: username,
-		    			password: password
+		    			"username": username,
+		    			"password": password
 		    		},
 		    		success: function(response){
 		            	if(response.message=="success"){

@@ -63,10 +63,10 @@
 					url: "person/addPerson",
 					type: "post",
 					data: {
-						username: username,
-						password: password,
-						level: level,
-						remark: remark
+						"username": username,
+						"password": password,
+						"level": level,
+						"remark": remark
 					},
 					success: function(response){
 						if(response.message=="success"){

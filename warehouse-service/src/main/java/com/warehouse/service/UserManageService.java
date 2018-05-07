@@ -39,4 +39,25 @@ public interface UserManageService {
 	 * @return
 	 */
 	public Boolean checkUserExists(String username) throws Exception;
+	
+	/**
+	 * 获取所有的非超级管理员的用户
+	 * @return
+	 */
+	public List<Userinfo> selectAllUser() throws Exception;
+	
+	/**
+	 * 更新除了用户名之外的用户信息
+	 * @param userinfo
+	 * @return
+	 */
+	public Integer updateUserinfo(Userinfo userinfo) throws Exception;
+	
+	/**
+	 * 根据用户名删除用户信息
+	 * @param username
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer deletePersonByUsername(String username) throws Exception;
 }

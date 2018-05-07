@@ -68,8 +68,7 @@
 									if(level<=2){
 								%>
 									<li><a href="${pageContext.request.contextPath }/addPerson" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 仓库员工添加</a></li>
-									<li><a href="${pageContext.request.contextPath }/managePerson" target="function_frame"><i class="glyphicon glyphicon-user"></i> 仓库员工管理</a></li>
-									<li><a href="${pageContext.request.contextPath }/personPermission" target="function_frame"><i class="glyphicon glyphicon-ok"></i> 员工权限设置</a></li>
+									<li><a href="${pageContext.request.contextPath }/person/managePerson" target="function_frame"><i class="glyphicon glyphicon-user"></i> 仓库员工管理</a></li>
 								<%
 									}
 								%>

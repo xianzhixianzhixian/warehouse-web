@@ -1,61 +1,88 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.warehouse.bean.Userinfo"%>
 <%@ page pageEncoding="utf-8"%>
 <%@ page language="java" import="com.warehouse.utils.*" %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<script src="js/jquery-2.1.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<link href="css/managePerson.css" rel="stylesheet" type="text/css"/>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
-		<!-- Latest compiled and minified Locales -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<script src="../js/jquery-2.1.1.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link href="../css/managePerson.css" rel="stylesheet" type="text/css">
+		<%	
+			response.setHeader("Access-Control-Allow-Origin","*");
+		%>
 	</head>
 	<body>
 		<div style="width: 100%; text-align: center;"><h2>仓库员工管理</h2></div>
 		<div class="div_table">
 			<table id="usertable" class="table table-bordered table-hover">
 				<tr>
-					<th>用户名</th><th>权限</th><th>密码</th><th>备注</th><th>创建时间</th><th>修改时间</th><th>操作</th>
+					<th>用 户 名</th><th>权 限</th><th>密 码</th><th>备 注</th><th>创 建 时 间</th><th>修 改 时 间</th><th>操 作</th>
 				</tr>
+				<%
+					ArrayList<Userinfo> list=(ArrayList<Userinfo>)session.getAttribute("userlist");
+					for(Userinfo user : list){
+				%>
 				<tr >
-					<td>admin</td><td name="level">管理员</td><td>123456</td><td>超级管理员</td><td>31321</td><td>132654</td>
+					<td name="username"><%=user.getUsername() %></td>
+					<td name="level">
+						<%
+							if(user.getLevel()==2){
+						%>
+						管 理 员
+						<%
+							}else if(user.getLevel()==3){
+						%>
+						普 通 用 户
+						<%	
+							}
+						%>
+					</td><td name="password"></td><td name="remark"><%=user.getRemark() %></td><td name="createAt"><%=user.getCreatedAt() %></td><td name="updateAt"><%=user.getUpdatedAt() %></td>
 					<td>
-						<button id="changeInfo">修改</button> <button id="deleteInfo">删除</button>
+						<button id="changeInfo">修 改</button> <button id="deleteInfo">删 除</button>
 					</td>
 				</tr>
+				<%
+					}
+				%>
 			</table>
 		</div>
 	</body>
 	<script type="text/javascript">
 		//动态表格实现
 		$("#changeInfo").on("click",function(){
-			var value = $(this).text()=="修改"?"确认":"修改";
+			var value = $(this).text()=="修 改"?"确 认":"修 改";
 	        
 	        $(this).parent().siblings("td").each(function(){ //获取当前其它单元格
 	        	inner_text=$(this).find("input:text"); //判断单元格中是否有文本框
 	        	if(!inner_text.length){ //沒有文本框则生成一个文本框
+					if($(this).attr("name")=="username"
+						|| $(this).attr("name")=="createAt"
+						|| $(this).attr("name")=="updateAt"){
+						return true;
+	        		}	        		
 	        		if($(this).attr("name")=="level"){
-	        			if($(this).text()=="管理员"){
-	        				$(this).html("<input type='radio' name='levelRadios' value='2' checked='checked'/>管理员"
+	        			if($(this).text().trim()=="管 理 员"){
+	        				$(this).html("<input type='radio' name='levelRadios' value='2' checked='checked'/>管理员<br>"
 		        					+	"<input type='radio' name='levelRadios' value='3' />普通用户")
-	        			}else if($(this).text()=="普通用户"){
-	        				$(this).html("<input type='radio' name='levelRadios' value='2' />管理员"
+	        			}else if($(this).text().trim()=="普 通 用 户"){
+	        				$(this).html("<input type='radio' name='levelRadios' value='2' />管理员<br>"
 		        					+	"<input type='radio' name='levelRadios' value='3' checked='checked' />普通用户")
-	        			}else if(value=="修改" && $(this).find("input:radio").size()>0){
+	        			}else if(value=="修 改" && $(this).find("input:radio").size()>0){
 	        				var level=$(this).find("input[name='levelRadios']:checked").val();
 	        				if(level=="2"){
-	        					$(this).html("管理员");
+	        					$(this).html("管 理 员");
 	        				}else if(level=="3"){
-	        					$(this).html("普通用户");
+	        					$(this).html("普 通 用 户");
 	        				}
 	        			}
 	        		}else{
-	        			$(this).html("<input type='text' class='form-control' value="+$(this).text()+" style='width:99%;' />");
+	        			if($(this).attr("name")=="password"){
+	        				$(this).html("<input type='text' class='form-control' style='width:99%;' />");
+	        			}else{
+	        				$(this).html("<input type='text' class='form-control' value='"+$(this).text()+"' style='width:99%;' />");
+	        			}
 	        		}
 	        	}else{
 	        		$(this).html(inner_text.val());
@@ -63,14 +90,62 @@
 	        });
 	        
 	        $(this).text(value); //更改按钮的值
+	        if(value=="修 改"){
+	        	if(confirm("确定输入的数据无误？")){
+		        	var parent=$(this).parent().parent();
+		        	var username=parent.find("td[name='username']").text().trim();
+		        	var level=parent.find("td[name='level']").text().trim();
+		        	var password=parent.find("td[name='password']").text();
+		        	var remark=parent.find("td[name='remark']").text().trim();
+		        	
+		        	if(level=="管 理 员"){
+		        		level=2;
+		        	}else if(level=="普 通 用 户"){
+		        		level=3;
+		        	}
+		        	
+	        		$.ajax({
+	        			type: "post",
+		        		url: "updateUserinfo",
+	        			data: {
+		        			"username": username,
+		        			"level": level,
+		        			"password": password,
+		        			"remark": remark
+		        		},
+		        		success: function(response){
+		        			if(response.message=="success"){
+		        				alert("修改用户信息成功");
+		        			}else if(response.message=="fail"){
+		        				alert("修改用户信息错误");
+		        			}else if(response.message=="passwd_same"){
+		        				alert("输入的新密码与原密码相同，用户信息未更新");
+		        			}
+		        		}
+		        	});
+	        	}
+	        }
 		});
 		
 		$("#deleteInfo").click(function(){
 			if(confirm("确定删除该用户？")){
-				alert("该用户已删除");
+				var parent=$(this).parent().parent();
+	        	var username=parent.find("td[name='username']").text().trim();
+	        	$.ajax({
+	        		type: "post",
+	        		url: "deletePerson",
+	        		data: {
+	        			"username": username
+	        		},
+	        		success: function(response){
+	        			if(response.message=="success"){
+	        				alert("删除用户信息成功");
+	        			}else if(response.message=="fail"){
+	        				alert("删除用户信息错误");
+	        			}
+	        		}
+	        	});
 				var rowindex=$(this).parent().parent().remove();
-			}else{
-				
 			}
 		});
 	</script>

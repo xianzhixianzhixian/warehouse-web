@@ -100,4 +100,11 @@ public interface UserinfoMapper {
      * @return
      */
     int updatePasswordByUsername(Userinfo record);
+    
+    /**
+     * 根据用户名删除用户信息
+     * @param username
+     * @return
+     */
+    int deletePersonByUsername(String username);
 }

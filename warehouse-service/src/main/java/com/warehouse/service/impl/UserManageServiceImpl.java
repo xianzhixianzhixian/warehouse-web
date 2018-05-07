@@ -63,5 +63,32 @@ public class UserManageServiceImpl implements UserManageService {
 		}
 		return Boolean.TRUE;
 	}
+
+	@Override
+	public List<Userinfo> selectAllUser() throws Exception{
+		UserinfoExample example=new UserinfoExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andLevelNotEqualTo(1);
+		
+		return userinfoMapper.selectByExample(example);
+	}
+
+	@Override
+	public Integer updateUserinfo(Userinfo userinfo) throws Exception {
+		UserinfoExample example=new UserinfoExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andUsernameEqualTo(userinfo.getUsername());
+		if(userinfo.getPassword().length()==0 || userinfo.getPassword()==null) {
+			userinfo.setPassword(null);
+		}else {
+			userinfo.setPassword(MD5.getMD5(userinfo.getPassword()));
+		}
+		return userinfoMapper.updateByExampleSelective(userinfo, example);
+	}
+
+	@Override
+	public Integer deletePersonByUsername(String username) throws Exception {
+		return userinfoMapper.deletePersonByUsername(username);
+	}
 	
 }
