@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.warehouse.bean.Log;
 import com.warehouse.bean.Userinfo;
 import com.warehouse.common.WMessage;
 import com.warehouse.common.WResponse;
+import com.warehouse.service.LogService;
 import com.warehouse.service.UserManageService;
 import com.warehouse.utils.MD5;
+import com.warehouse.utils.TimeUtil;
 
 /**
  * 人员管理controller
@@ -27,9 +30,12 @@ public class UserController {
 	@Autowired
 	private UserManageService userManageService;
 	
+	@Autowired
+	private LogService logService;
+	
 	@ResponseBody
 	@RequestMapping(value = "/addPerson", method=RequestMethod.POST)
-	public WResponse addPerson(Userinfo userinfo) throws Exception {
+	public WResponse addPerson(Userinfo userinfo,HttpSession session) throws Exception {
 		WResponse response=new WResponse();
 		
 		if (userManageService.checkUserExists(userinfo.getUsername())) {
@@ -43,6 +49,17 @@ public class UserController {
 		}else{
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
+		
+		Log log=new Log();
+		log.setOperatorName((String)session.getAttribute("username"));
+		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
+		log.setOperationDetail("用户： "+session.getAttribute("username")
+								+" 等级： "+session.getAttribute("level")
+								+" 于 "+TimeUtil.getNowerTime()
+								+" 添加用户： "+userinfo.toString()
+								+" 结果： "+ response.getMessage());
+		logService.insertLog(log);
+		
 		return response;
 	}
 	
@@ -64,11 +81,27 @@ public class UserController {
 		if(num>=1) {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
+		
+		Log log=new Log();
+		log.setOperatorName((String)session.getAttribute("username"));
+		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
+		log.setOperationDetail("用户： "+session.getAttribute("username")
+								+" 等级： "+session.getAttribute("level")
+								+" 于 "+TimeUtil.getNowerTime()
+								+" 更改 "+userinfo.getUsername()+" 的密码： "
+								+" 结果： "+ response.getMessage());
+		logService.insertLog(log);
+		
 		return response;
 	}
 	
 	@RequestMapping(value = "/managePerson", method = RequestMethod.GET)
 	public String managePerson(HttpSession session) throws Exception {
+		
+		if(session.getAttribute("username")==null) {
+			return "error";
+		}
+		
 		List<Userinfo> userlist=userManageService.selectAllUser();
 		session.setAttribute("userlist", userlist);
 		return "managePerson";
@@ -76,7 +109,7 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/updateUserinfo", method = RequestMethod.POST)
-	public WResponse updateUserinfo(Userinfo userinfo) throws Exception {
+	public WResponse updateUserinfo(Userinfo userinfo,HttpSession session) throws Exception {
 		WResponse response=new WResponse();
 		if (userManageService.checkPasswdIsSameByUsername(userinfo)) {
 			response.setMessage(WMessage.MSG_SAME_PASSWD);
@@ -88,18 +121,40 @@ public class UserController {
 		if(num>=1) {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
+		
+		Log log=new Log();
+		log.setOperatorName((String)session.getAttribute("username"));
+		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
+		log.setOperationDetail("用户： "+session.getAttribute("username")
+								+" 等级： "+session.getAttribute("level")
+								+" 于 "+TimeUtil.getNowerTime()
+								+" 更新用户信息为： "+userinfo.toString()
+								+" 结果： "+ response.getMessage());
+		logService.insertLog(log);
+		
 		return response;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/deletePerson", method = RequestMethod.POST)
-	public WResponse deletePerson(String username) throws Exception {
+	public WResponse deletePerson(String username,HttpSession session) throws Exception {
 		WResponse response=new WResponse();
 		response.setMessage(WMessage.MSG_FAIL);
 		Integer num=userManageService.deletePersonByUsername(username);
 		if(num>=1) {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
+		
+		Log log=new Log();
+		log.setOperatorName((String)session.getAttribute("username"));
+		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
+		log.setOperationDetail("用户： "+session.getAttribute("username")
+								+" 等级： "+session.getAttribute("level")
+								+" 于 "+TimeUtil.getNowerTime()
+								+" 删除用户： "+username
+								+" 结果： "+ response.getMessage());
+		logService.insertLog(log);
+		
 		return response;
 	}
 }

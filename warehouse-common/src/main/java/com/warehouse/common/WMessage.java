@@ -31,4 +31,24 @@ public class WMessage {
 	 * 仓库信息已存在
 	 */
 	public static String MSG_WAREHOUSE_EXISTS="warehouse_exists";
+	
+	/**
+	 * 操作类型：添加
+	 */
+	public static String MSG_OPREATION_ADD="add";
+	
+	/**
+	 * 操作类型：修改
+	 */
+	public static String MSG_OPREATION_CHANGE="change";
+	
+	/**
+	 * 操作类型：删除
+	 */
+	public static String MSG_OPREATION_DELETE="delete";
+	
+	/**
+	 * 操作类型：登陆
+	 */
+	public static String MSG_OPREATION_LOGIN="login";
 }

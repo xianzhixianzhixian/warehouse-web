@@ -332,4 +332,11 @@ public class Warehouse {
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Warehouse [num=" + num + ", name=" + name + ", responser=" + responser + ", responserPhone="
+				+ responserPhone + ", company=" + company + ", contractDate=" + contractDate + ", remark=" + remark
+				+ "]";
+	}
 }

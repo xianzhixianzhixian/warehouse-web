@@ -233,4 +233,9 @@ public class Userinfo {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+	@Override
+	public String toString() {
+		return "Userinfo [username=" + username + ", level=" + level + ", remark=" + remark + "]";
+	}
 }
