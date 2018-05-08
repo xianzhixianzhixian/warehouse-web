@@ -28,7 +28,7 @@ CREATE TABLE `goods` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='物资信息表' ;
 
-#仓储表
+#仓库表
 CREATE TABLE `warehouse` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `num` varchar(255) NOT NULL DEFAULT '' COMMENT '仓库编号',
@@ -36,7 +36,7 @@ CREATE TABLE `warehouse` (
   `responser` varchar(50) NOT NULL DEFAULT '' COMMENT '仓库负责人',
   `responser_phone` varchar(70) NOT NULL DEFAULT '' COMMENT '仓库负责人联系方式',
   `company` varchar(150) NOT NULL DEFAULT '' COMMENT '仓库所属公司',
-  `contract_date` datetime NOT NULL DEFAULT '1000-01-01 00:00:00' COMMENT '仓库签订合同的日期',
+  `contract_date` date NOT NULL DEFAULT '1000-01-01' COMMENT '仓库签订合同的日期',
   `operator` varchar(70) NOT NULL DEFAULT '' COMMENT '操作人',
   `updateed_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日期',
   `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '备注',

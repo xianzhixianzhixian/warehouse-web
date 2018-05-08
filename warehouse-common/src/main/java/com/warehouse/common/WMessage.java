@@ -26,4 +26,9 @@ public class WMessage {
 	 * 用户名已存在
 	 */
 	public static String MSG_USER_EXISTS="user_exists";
+	
+	/**
+	 * 仓库信息已存在
+	 */
+	public static String MSG_WAREHOUSE_EXISTS="warehouse_exists";
 }
