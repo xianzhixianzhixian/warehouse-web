@@ -1,5 +1,7 @@
 package com.warehouse.service;
 
+import java.util.List;
+
 import com.warehouse.bean.Warehouse;
 
 /**
@@ -21,4 +23,17 @@ public interface WarehouseService {
 	 * @throws Exception
 	 */
 	public Boolean checkWarehouseExists(String num) throws Exception;
+	
+	/**
+	 * 获得所有仓库的信息
+	 * @return
+	 */
+	public List<Warehouse> selectAllWarehouse() throws Exception;
+	
+	/**
+	 * 更新仓库信息
+	 * @param warehouse
+	 * @return
+	 */
+	public Integer updateWarehouse(Warehouse warehouse) throws Exception;
 }

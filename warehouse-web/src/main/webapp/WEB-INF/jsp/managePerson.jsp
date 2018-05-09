@@ -38,32 +38,6 @@
 						</td>
 					</tr>
 				</c:forEach>
-				<%-- <%
-					ArrayList<Userinfo> list=(ArrayList<Userinfo>)session.getAttribute("userlist");
-					for(Userinfo user : list){
-				%>
-				<tr >
-					<td name="username"><%=user.getUsername() %></td>
-					<td name="level">
-						<%
-							if(user.getLevel()==2){
-						%>
-						管 理 员
-						<%
-							}else if(user.getLevel()==3){
-						%>
-						普 通 用 户
-						<%	
-							}
-						%>
-					</td><td name="password"></td><td name="remark"><%=user.getRemark() %></td><td name="createAt"><%=user.getCreatedAt() %></td><td name="updateAt"><%=user.getUpdatedAt() %></td>
-					<td>
-						<button id="changeInfo">修 改</button> <button id="deleteInfo">删 除</button>
-					</td>
-				</tr>
-				<%
-					}
-				%> --%>
 			</table>
 		</div>
 	</body>

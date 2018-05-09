@@ -29,7 +29,7 @@
 								</a>
 								<ul id="fundationtalInfoSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
 									<li><a href="${pageContext.request.contextPath}/addWarehouse" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 仓库信息添加</a></li>
-									<li><a href="${pageContext.request.contextPath}/manageWarehouse" target="function_frame"><i class="glyphicon glyphicon-home"></i> 仓库信息管理</a></li>
+									<li><a href="${pageContext.request.contextPath}/warehouse/manageWarehouse" target="function_frame"><i class="glyphicon glyphicon-home"></i> 仓库信息管理</a></li>
 									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-indent-left"></i> 供应商信息管理</a></li>
 								</ul>
 							</li>

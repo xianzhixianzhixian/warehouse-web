@@ -1,5 +1,7 @@
 package com.warehouse.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,21 @@ public class WarehouseServiceImpl implements WarehouseService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<Warehouse> selectAllWarehouse()  throws Exception {
+		WarehouseExample example=new WarehouseExample();
+		return warehouseMapper.selectByExample(example);
+	}
+
+	@Override
+	public Integer updateWarehouse(Warehouse warehouse)  throws Exception {
+		
+		WarehouseExample example=new WarehouseExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andNumEqualTo(warehouse.getNum());
+		return warehouseMapper.updateByExampleSelective(warehouse, example);
 	}
 
 }

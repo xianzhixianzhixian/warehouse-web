@@ -90,8 +90,8 @@
 					data: {
 						"num": warehousenum,
 						"name": warehousename,
-						"repsonser": repsonser,
-						"responser_phone": responserphone,
+						"responser": repsonser,
+						"responserPhone": responserphone,
 						"company": company,
 						"contract_date": contractdate,
 						"remark": remark
