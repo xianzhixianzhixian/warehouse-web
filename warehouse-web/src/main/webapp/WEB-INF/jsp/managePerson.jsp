@@ -1,7 +1,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.warehouse.bean.Userinfo"%>
 <%@ page pageEncoding="utf-8"%>
-<%@ page language="java" import="com.warehouse.utils.*" %>
+<%@ page language="java" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,9 +10,6 @@
 		<script src="../js/jquery-2.1.1.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<link href="../css/managePerson.css" rel="stylesheet" type="text/css">
-		<%	
-			response.setHeader("Access-Control-Allow-Origin","*");
-		%>
 	</head>
 	<body>
 		<div style="width: 100%; text-align: center;"><h2>仓库员工管理</h2></div>
@@ -20,7 +18,27 @@
 				<tr>
 					<th>用 户 名</th><th>权 限</th><th>密 码</th><th>备 注</th><th>创 建 时 间</th><th>修 改 时 间</th><th>操 作</th>
 				</tr>
-				<%
+				<c:forEach items="${userlist}" var="user">
+					<tr>
+						<td name="username">${user.username }</td>
+						<td name="level">
+							<c:set var="level" scope="page" value="${user.level }"/>
+							<c:choose>
+								<c:when test="${level==2 }">管理员</c:when>
+								<c:when test="${level==3 }">普通用户</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
+						</td>
+						<td name="password"></td>
+						<td name="remark">${user.remark }</td>
+						<td name="createAt">${user.createdAt }</td>
+						<td name="updateAt">${user.updatedAt }</td>
+						<td>
+							<button id="changeInfo">修 改</button> <button id="deleteInfo">删 除</button>
+						</td>
+					</tr>
+				</c:forEach>
+				<%-- <%
 					ArrayList<Userinfo> list=(ArrayList<Userinfo>)session.getAttribute("userlist");
 					for(Userinfo user : list){
 				%>
@@ -45,7 +63,7 @@
 				</tr>
 				<%
 					}
-				%>
+				%> --%>
 			</table>
 		</div>
 	</body>

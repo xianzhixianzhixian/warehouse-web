@@ -2,10 +2,12 @@ package com.warehouse.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -94,14 +96,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/managePerson", method = RequestMethod.GET)
-	public String managePerson(HttpSession session) throws Exception {
+	public String managePerson(HttpSession session,Model model) throws Exception {
 		
 		if(session.getAttribute("username")==null) {
 			return "error";
 		}
 		
 		List<Userinfo> userlist=userManageService.selectAllUser();
-		session.setAttribute("userlist", userlist);
+		model.addAttribute("userlist",userlist);
 		return "managePerson";
 	}
 	

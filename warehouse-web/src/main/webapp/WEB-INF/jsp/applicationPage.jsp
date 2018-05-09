@@ -29,7 +29,7 @@
 								</a>
 								<ul id="fundationtalInfoSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
 									<li><a href="${pageContext.request.contextPath}/addWarehouse" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 仓库信息添加</a></li>
-									<li><a href="${pageContext.request.contextPath}/warehouseManage" target="function_frame"><i class="glyphicon glyphicon-home"></i> 仓库信息管理</a></li>
+									<li><a href="${pageContext.request.contextPath}/manageWarehouse" target="function_frame"><i class="glyphicon glyphicon-home"></i> 仓库信息管理</a></li>
 									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-indent-left"></i> 供应商信息管理</a></li>
 								</ul>
 							</li>
@@ -65,7 +65,7 @@
 								<%
 									String username=(String)session.getAttribute("username");
 									Integer level=(Integer)session.getAttribute("level");
-									if(level<=2){
+									if(level==1){
 								%>
 									<li><a href="${pageContext.request.contextPath }/addPerson" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 仓库员工添加</a></li>
 									<li><a href="${pageContext.request.contextPath }/person/managePerson" target="function_frame"><i class="glyphicon glyphicon-user"></i> 仓库员工管理</a></li>
@@ -73,6 +73,13 @@
 									}
 								%>
 									<li><a href="${pageContext.request.contextPath }/changePassword" target="function_frame"><i class="glyphicon glyphicon-certificate"></i> 用户个人密码修改</a></li>
+								<%
+									if(level==1){
+								%>
+									<li><a href="${pageContext.request.contextPath }/systemLog" target="function_frame"><i class="glyphicon glyphicon-list-alt"></i> 系统操作日志</a></li>
+								<%
+									}
+								%>
 								</ul>
 							</li>
 							<li>
