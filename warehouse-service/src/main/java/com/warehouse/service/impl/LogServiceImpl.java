@@ -1,10 +1,13 @@
 package com.warehouse.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.warehouse.bean.Log;
+import com.warehouse.bean.LogExample;
 import com.warehouse.common.WMessage;
 import com.warehouse.mapper.LogMapper;
 import com.warehouse.service.LogService;
@@ -29,6 +32,12 @@ public class LogServiceImpl implements LogService {
 		log.setOperationType(operationType);
 		log.setOperationDetail(operationDetail);
 		return log;
+	}
+
+	@Override
+	public List<Log> selectAllLog() {
+		LogExample example=new LogExample();
+		return logMapper.selectByExample(example);
 	}
 	
 	

@@ -56,10 +56,10 @@
 							return true;
 		        		}	        		
 		        		if($(this).attr("name")=="level"){
-		        			if($(this).text().trim()=="管 理 员"){
+		        			if($(this).text().trim()=="管理员"){
 		        				$(this).html("<input type='radio' name='levelRadios' value='2' checked='checked'/>管理员<br>"
 			        					+	"<input type='radio' name='levelRadios' value='3' />普通用户")
-		        			}else if($(this).text().trim()=="普 通 用 户"){
+		        			}else if($(this).text().trim()=="普通用户"){
 		        				$(this).html("<input type='radio' name='levelRadios' value='2' />管理员<br>"
 			        					+	"<input type='radio' name='levelRadios' value='3' checked='checked' />普通用户")
 		        			}else if(value=="修 改" && $(this).find("input:radio").size()>0){

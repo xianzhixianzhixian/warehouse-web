@@ -1,5 +1,7 @@
 package com.warehouse.service;
 
+import java.util.List;
+
 import com.warehouse.bean.Log;
 
 /**
@@ -13,6 +15,12 @@ public interface LogService {
 	 * @param log
 	 */
 	public Integer insertLog(Log log);
+	
+	/**
+	 * 获取所有日志
+	 * @return
+	 */
+	public List<Log> selectAllLog();
 	
 	/**
 	 * 生成log实体

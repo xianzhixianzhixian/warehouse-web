@@ -40,7 +40,7 @@ public class WMessage {
 	/**
 	 * 操作类型：修改
 	 */
-	public static String MSG_OPREATION_CHANGE="change";
+	public static String MSG_OPREATION_UPDATE="update";
 	
 	/**
 	 * 操作类型：删除

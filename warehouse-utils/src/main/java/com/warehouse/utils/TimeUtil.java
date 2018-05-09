@@ -1,6 +1,9 @@
 package com.warehouse.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * 获取当前时间的工具类
@@ -19,5 +22,21 @@ public class TimeUtil {
 		int second = c.get(Calendar.SECOND);
 
 		return year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+	}
+	
+	/**
+	 * 格式化时间日期为yyyy-MM-dd hh:mm:ss
+	 * @param date
+	 * @return
+	 */
+	public static Date formatDate(Date date) {
+		SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		try {
+			return dateFormat.parse(date.toString());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -30,7 +30,8 @@
 								<ul id="fundationtalInfoSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
 									<li><a href="${pageContext.request.contextPath}/addWarehouse" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 仓库信息添加</a></li>
 									<li><a href="${pageContext.request.contextPath}/warehouse/manageWarehouse" target="function_frame"><i class="glyphicon glyphicon-home"></i> 仓库信息管理</a></li>
-									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-indent-left"></i> 供应商信息管理</a></li>
+									<li><a href="${pageContext.request.contextPath}/addSupplier" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 供应商信息添加</a></li>
+									<li><a href="${pageContext.request.contextPath }/supplier/manageSupplier" target="function_frame"><i class="glyphicon glyphicon-indent-left"></i> 供应商信息管理</a></li>
 								</ul>
 							</li>
 							<li>
@@ -76,7 +77,7 @@
 								<%
 									if(level==1){
 								%>
-									<li><a href="${pageContext.request.contextPath }/systemLog" target="function_frame"><i class="glyphicon glyphicon-list-alt"></i> 系统操作日志</a></li>
+									<li><a href="${pageContext.request.contextPath }/log/showAllLog" target="function_frame"><i class="glyphicon glyphicon-list-alt"></i> 系统操作日志</a></li>
 								<%
 									}
 								%>

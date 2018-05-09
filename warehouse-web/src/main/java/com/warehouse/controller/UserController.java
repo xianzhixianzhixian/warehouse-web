@@ -53,7 +53,7 @@ public class UserController {
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
-									WMessage.MSG_OPREATION_CHANGE,
+									WMessage.MSG_OPREATION_ADD,
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
@@ -84,7 +84,7 @@ public class UserController {
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
-									WMessage.MSG_OPREATION_CHANGE,
+									WMessage.MSG_OPREATION_UPDATE,
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
@@ -123,7 +123,7 @@ public class UserController {
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
-									WMessage.MSG_OPREATION_CHANGE,
+									WMessage.MSG_OPREATION_UPDATE,
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
@@ -145,7 +145,7 @@ public class UserController {
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
-									WMessage.MSG_OPREATION_CHANGE,
+									WMessage.MSG_OPREATION_DELETE,
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
