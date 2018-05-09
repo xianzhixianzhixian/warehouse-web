@@ -48,14 +48,13 @@ public class WarehouseController {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
 		
-		Log log=new Log();
-		log.setOperatorName((String)session.getAttribute("username"));
-		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
-		log.setOperationDetail("用户： "+session.getAttribute("username")
-								+" 等级： "+session.getAttribute("level")
-								+" 于 "+TimeUtil.getNowerTime()
-								+" 添加仓库： "+warehouse.toString()
-								+" 结果： "+ response.getMessage());
+		Log log=logService.createLog((String)session.getAttribute("username"),
+									WMessage.MSG_OPREATION_CHANGE,
+									"用户： "+session.getAttribute("username")
+									+" 等级： "+session.getAttribute("level")
+									+" 于 "+TimeUtil.getNowerTime()
+									+" 添加仓库： "+warehouse.toString()
+									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
 		return response;

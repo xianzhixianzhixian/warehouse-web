@@ -56,13 +56,12 @@ public class LoginController {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
 		
-		Log log=new Log();
-		log.setOperatorName(userinfo.getUsername());
-		log.setOperationType(WMessage.MSG_OPREATION_LOGIN);
-		log.setOperationDetail("用户： "+userinfo.getUsername()
-								+"等级： "+userinfo.getLevel()
-								+" 于 "+TimeUtil.getNowerTime()
-								+" 登陆系统 结果： "+response.getMessage());
+		Log log=logService.createLog(userinfo.getUsername(),
+									WMessage.MSG_OPREATION_LOGIN,
+									"用户： "+userinfo.getUsername()
+									+"等级： "+userinfo.getLevel()
+									+" 于 "+TimeUtil.getNowerTime()
+									+" 登陆系统 结果： "+response.getMessage());
 		logService.insertLog(log);
 		
 		return response;

@@ -13,4 +13,13 @@ public interface LogService {
 	 * @param log
 	 */
 	public Integer insertLog(Log log);
+	
+	/**
+	 * 生成log实体
+	 * @param operator
+	 * @param operationType
+	 * @param operationDetail
+	 * @return
+	 */
+	public Log createLog(String operator,String operationType,String operationDetail);
 }

@@ -50,14 +50,13 @@ public class UserController {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
 		
-		Log log=new Log();
-		log.setOperatorName((String)session.getAttribute("username"));
-		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
-		log.setOperationDetail("用户： "+session.getAttribute("username")
-								+" 等级： "+session.getAttribute("level")
-								+" 于 "+TimeUtil.getNowerTime()
-								+" 添加用户： "+userinfo.toString()
-								+" 结果： "+ response.getMessage());
+		Log log=logService.createLog((String)session.getAttribute("username"),
+									WMessage.MSG_OPREATION_CHANGE,
+									"用户： "+session.getAttribute("username")
+									+" 等级： "+session.getAttribute("level")
+									+" 于 "+TimeUtil.getNowerTime()
+									+" 添加用户： "+userinfo.toString()
+									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
 		return response;
@@ -82,14 +81,13 @@ public class UserController {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
 		
-		Log log=new Log();
-		log.setOperatorName((String)session.getAttribute("username"));
-		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
-		log.setOperationDetail("用户： "+session.getAttribute("username")
-								+" 等级： "+session.getAttribute("level")
-								+" 于 "+TimeUtil.getNowerTime()
-								+" 更改 "+userinfo.getUsername()+" 的密码： "
-								+" 结果： "+ response.getMessage());
+		Log log=logService.createLog((String)session.getAttribute("username"),
+									WMessage.MSG_OPREATION_CHANGE,
+									"用户： "+session.getAttribute("username")
+									+" 等级： "+session.getAttribute("level")
+									+" 于 "+TimeUtil.getNowerTime()
+									+" 更改 "+userinfo.getUsername()+" 的密码： "
+									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
 		return response;
@@ -122,14 +120,13 @@ public class UserController {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
 		
-		Log log=new Log();
-		log.setOperatorName((String)session.getAttribute("username"));
-		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
-		log.setOperationDetail("用户： "+session.getAttribute("username")
-								+" 等级： "+session.getAttribute("level")
-								+" 于 "+TimeUtil.getNowerTime()
-								+" 更新用户信息为： "+userinfo.toString()
-								+" 结果： "+ response.getMessage());
+		Log log=logService.createLog((String)session.getAttribute("username"),
+									WMessage.MSG_OPREATION_CHANGE,
+									"用户： "+session.getAttribute("username")
+									+" 等级： "+session.getAttribute("level")
+									+" 于 "+TimeUtil.getNowerTime()
+									+" 更新用户信息为： "+userinfo.toString()
+									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
 		return response;
@@ -145,14 +142,13 @@ public class UserController {
 			response.setMessage(WMessage.MSG_SUCCESS);
 		}
 		
-		Log log=new Log();
-		log.setOperatorName((String)session.getAttribute("username"));
-		log.setOperationType(WMessage.MSG_OPREATION_CHANGE);
-		log.setOperationDetail("用户： "+session.getAttribute("username")
-								+" 等级： "+session.getAttribute("level")
-								+" 于 "+TimeUtil.getNowerTime()
-								+" 删除用户： "+username
-								+" 结果： "+ response.getMessage());
+		Log log=logService.createLog((String)session.getAttribute("username"),
+									WMessage.MSG_OPREATION_CHANGE,
+									"用户： "+session.getAttribute("username")
+									+" 等级： "+session.getAttribute("level")
+									+" 于 "+TimeUtil.getNowerTime()
+									+" 删除用户： "+username
+									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
 		return response;
