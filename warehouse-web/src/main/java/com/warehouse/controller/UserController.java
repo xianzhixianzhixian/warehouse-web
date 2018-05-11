@@ -42,16 +42,15 @@ public class UserController {
 		
 		if (userManageService.checkUserExists(userinfo.getUsername())) {
 			response.setMessage(WMessage.MSG_USER_EXISTS);
-			return response;
+		}else {
+			Integer num=userManageService.addPerson(userinfo);
+			if(num<1) {
+				response.setMessage(WMessage.MSG_FAIL);
+			}else{
+				response.setMessage(WMessage.MSG_SUCCESS);
+			}
 		}
-		
-		Integer num=userManageService.addPerson(userinfo);
-		if(num<1) {
-			response.setMessage(WMessage.MSG_FAIL);
-		}else{
-			response.setMessage(WMessage.MSG_SUCCESS);
-		}
-		
+
 		Log log=logService.createLog((String)session.getAttribute("username"),
 									WMessage.MSG_OPREATION_ADD,
 									"用户： "+session.getAttribute("username")
@@ -73,14 +72,14 @@ public class UserController {
 		userinfo.setPassword(MD5.getMD5(userinfo.getPassword()));
 		if (userManageService.checkPasswdIsSameByUsername(userinfo)) {
 			response.setMessage(WMessage.MSG_SAME_PASSWD);
-			return response;
-		}
-		
-		response.setMessage(WMessage.MSG_FAIL);
-		Integer num=userManageService.updatePassword(userinfo);
-		
-		if(num>=1) {
-			response.setMessage(WMessage.MSG_SUCCESS);
+		}else {
+			Integer num=userManageService.updatePassword(userinfo);
+			
+			if(num>=1) {
+				response.setMessage(WMessage.MSG_SUCCESS);
+			}else {
+				response.setMessage(WMessage.MSG_FAIL);
+			}
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
@@ -113,13 +112,13 @@ public class UserController {
 		WResponse response=new WResponse();
 		if (userManageService.checkPasswdIsSameByUsername(userinfo)) {
 			response.setMessage(WMessage.MSG_SAME_PASSWD);
-			return response;
-		}
-		
-		response.setMessage(WMessage.MSG_FAIL);
-		Integer num=userManageService.updateUserinfo(userinfo);
-		if(num>=1) {
-			response.setMessage(WMessage.MSG_SUCCESS);
+		}else {
+			Integer num=userManageService.updateUserinfo(userinfo);
+			if(num>0) {
+				response.setMessage(WMessage.MSG_SUCCESS);
+			}else {
+				response.setMessage(WMessage.MSG_FAIL);
+			}
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
@@ -138,10 +137,11 @@ public class UserController {
 	@RequestMapping(value = "/deletePerson", method = RequestMethod.POST)
 	public WResponse deletePerson(String username,HttpSession session) throws Exception {
 		WResponse response=new WResponse();
-		response.setMessage(WMessage.MSG_FAIL);
 		Integer num=userManageService.deletePersonByUsername(username);
-		if(num>=1) {
+		if(num>0) {
 			response.setMessage(WMessage.MSG_SUCCESS);
+		}else {
+			response.setMessage(WMessage.MSG_FAIL);
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),

@@ -49,7 +49,7 @@
 						if($(this).attr("name")=="responser"
 							|| $(this).attr("name")=="responserphone"
 							|| $(this).attr("name")=="remark"){
-							$(this).html("<input type='text' class='form-control' value='"+$(this).text()+"' style='width:99%;' />");;
+							$(this).html("<input type='text' class='form-control' value='"+$(this).text()+"' style='width:99%;' />");
 		        		}
 		        	}else{
 		        		$(this).html(inner_text.val());

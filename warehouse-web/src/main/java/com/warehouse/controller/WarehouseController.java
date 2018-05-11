@@ -42,19 +42,19 @@ public class WarehouseController {
 	@RequestMapping(value = "/addWarehouse", method = RequestMethod.POST)
 	public WResponse addWarehouse(Warehouse warehouse,@RequestParam("contract_date") String contractdate,HttpSession session) throws Exception {
 		WResponse response=new WResponse();
-		response.setMessage(WMessage.MSG_FAIL);
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
 		Date date =sdf.parse(contractdate);
 		warehouse.setContractDate(date);
 		warehouse.setOperator((String)session.getAttribute("username"));
 		if(warehouseService.checkWarehouseExists(warehouse.getNum())) {
 			response.setMessage(WMessage.MSG_WAREHOUSE_EXISTS);
-			return response;
-		}
-		
-		Integer num=warehouseService.insertWarehouse(warehouse);
-		if(num>0) {
-			response.setMessage(WMessage.MSG_SUCCESS);
+		}else {
+			Integer num=warehouseService.insertWarehouse(warehouse);
+			if(num>0) {
+				response.setMessage(WMessage.MSG_SUCCESS);
+			}else {
+				response.setMessage(WMessage.MSG_FAIL);
+			}
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
@@ -86,12 +86,13 @@ public class WarehouseController {
 	public WResponse updateWarehouse(Warehouse warehouse,HttpSession session) throws Exception {
 		
 		WResponse response=new WResponse();
-		response.setMessage(WMessage.MSG_FAIL);
 		warehouse.setOperator((String)session.getAttribute("username"));
 		
 		Integer num=warehouseService.updateWarehouse(warehouse);
 		if(num>0) {
 			response.setMessage(WMessage.MSG_SUCCESS);
+		}else {
+			response.setMessage(WMessage.MSG_FAIL);
 		}
 		
 		Log log=logService.createLog((String)session.getAttribute("username"),
