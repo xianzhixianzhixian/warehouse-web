@@ -9,7 +9,7 @@
 		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-2.1.1.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
-		<link href="../css/managePerson.css" rel="stylesheet" type="text/css">
+		<link href="../css/manageSupplier.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div style="width: 100%; text-align: center;"><h2>仓库员工管理</h2></div>

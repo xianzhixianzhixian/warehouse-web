@@ -38,6 +38,11 @@ public class WMessage {
 	public static String MSG_SUPPILER_EXISTS="suppiler_exists";
 	
 	/**
+	 * 物资信息已存在
+	 */
+	public static String MSG_GOODS_EXISTS="goods_exists";
+	
+	/**
 	 * 操作类型：添加
 	 */
 	public static String MSG_OPREATION_ADD="add";

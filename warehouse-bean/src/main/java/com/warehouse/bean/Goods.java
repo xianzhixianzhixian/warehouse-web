@@ -299,4 +299,10 @@ public class Goods {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+	@Override
+	public String toString() {
+		return "Goods [num=" + num + ", name=" + name + ", extendsParts=" + extendsParts + ", price=" + price
+				+ ", remark=" + remark + "]";
+	}
 }

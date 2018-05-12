@@ -1,0 +1,25 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html,body{
+	height: 100%;
+}
+
+*{
+	margin:0;
+	padding:0;
+}
+
+.login_internal{
+	width:300px;
+	margin:55px 100px;
+}
+
+.login_label{
+	width: 300px;
+	font-size:17px;
+	margin-top: 20px;
+	text-align: center;
+}
