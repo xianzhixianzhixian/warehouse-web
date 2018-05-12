@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.warehouse.bean.Log;
 import com.warehouse.bean.LogExample;
+import com.warehouse.bean.LogExample.Criteria;
 import com.warehouse.common.WMessage;
 import com.warehouse.mapper.LogMapper;
 import com.warehouse.service.LogService;
@@ -37,6 +38,15 @@ public class LogServiceImpl implements LogService {
 	@Override
 	public List<Log> selectAllLog() {
 		LogExample example=new LogExample();
+		return logMapper.selectByExample(example);
+	}
+
+	@Override
+	public List<Log> selectLogByUsernameAndOperationType(String username, String operationtype) {
+		LogExample example=new LogExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andOperatorNameEqualTo(username);
+		criteria.andOperationTypeEqualTo(operationtype);
 		return logMapper.selectByExample(example);
 	}
 	

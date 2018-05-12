@@ -1,11 +1,13 @@
 package com.warehouse.common;
 
+import java.io.Serializable;
+
 /**
  * 定义统一的消息
  * 2018.5.2
  */
 
-public class WMessage {
+public class WMessage implements Serializable {
 
 	/**
 	 * 操作失败
@@ -45,20 +47,20 @@ public class WMessage {
 	/**
 	 * 操作类型：添加
 	 */
-	public static String MSG_OPREATION_ADD="add";
+	public static String MSG_OPREATION_ADD="添加";
 	
 	/**
 	 * 操作类型：修改
 	 */
-	public static String MSG_OPREATION_UPDATE="update";
+	public static String MSG_OPREATION_UPDATE="更新";
 	
 	/**
 	 * 操作类型：删除
 	 */
-	public static String MSG_OPREATION_DELETE="delete";
+	public static String MSG_OPREATION_DELETE="删除";
 	
 	/**
 	 * 操作类型：登陆
 	 */
-	public static String MSG_OPREATION_LOGIN="login";
+	public static String MSG_OPREATION_LOGIN="登陆";
 }

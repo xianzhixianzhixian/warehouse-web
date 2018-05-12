@@ -8,12 +8,11 @@
 		<script src="js/bootstrap.min.js"></script>
 		<link href="css/addWarehouse.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="js/login.js"></script>
-		<!-- <script src="js/moment-with-locales.min.js"></script>    
-		<link href="css/bootstrap-datetimepicker.css" rel="stylesheet" />    
-		<script src="js/bootstrap-datetimepicker.js"></script> -->
-		<script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>  
-    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"  rel="stylesheet">  
-    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="js/moment.min.js"></script>
+		<script src="js/moment-with-locales.min.js"></script>
+		<script src="js/bootstrap-datetimepicker.js"></script>
+		<link href="css/bootstrap-datetimepicker.css" rel="stylesheet" />
+		<link href="css/bootstrap-datetimepicker-standalone.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div style="margin: 0 20%;">
@@ -112,7 +111,7 @@
 		
         $("#selectContractDate").datetimepicker({
         	format: 'YYYY-MM-DD',    
-            locale: moment.locale('zh-cn')
+        	locale: moment.locale('zh-cn') 
         });
 	</script>
 </html>

@@ -30,4 +30,12 @@ public interface LogService {
 	 * @return
 	 */
 	public Log createLog(String operator,String operationType,String operationDetail);
+	
+	/**
+	 * 根据用户名和操作类型来搜索日志
+	 * @param username
+	 * @param operationtype
+	 * @return
+	 */
+	public List<Log> selectLogByUsernameAndOperationType(String username,String operationtype);
 }
