@@ -9,10 +9,10 @@
 		<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<script src="../js/jquery-2.1.1.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
-		<link href="../css/systemLog.css" rel="stylesheet" type="text/css">
+		<link href="../css/goodsAddLog.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div style="width: 100%; text-align: center;"><h2>系统日志</h2></div>
+		<div style="width: 100%; text-align: center;"><h2>入库日志</h2></div>
 		<div class="div_table">
 			<table id="usertable" class="table table-bordered table-hover">
 				<tr>

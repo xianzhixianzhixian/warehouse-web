@@ -17,6 +17,10 @@
 					</div>
 				</div>
 			</div>
+			<%
+				String username=(String)session.getAttribute("username");
+				Integer level=(Integer)session.getAttribute("level");
+			%>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-14 ">
@@ -28,11 +32,17 @@
 								</a>
 								<ul id="fundationtalInfoSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
 									<li><a href="${pageContext.request.contextPath}/addGoods" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 物资信息添加</a></li>
-									<li><a href="${pageContext.request.contextPath}/goods/manageGoods" target="function_frame"><i class="glyphicon glyphicon-file"></i> 物资信息管理</a></li>
 									<li><a href="${pageContext.request.contextPath}/addWarehouse" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 仓库信息添加</a></li>
-									<li><a href="${pageContext.request.contextPath}/warehouse/manageWarehouse" target="function_frame"><i class="glyphicon glyphicon-home"></i> 仓库信息管理</a></li>
 									<li><a href="${pageContext.request.contextPath}/addSupplier" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 供应商信息添加</a></li>
+								<%
+									if(level<=2){
+								%>
+									<li><a href="${pageContext.request.contextPath}/goods/manageGoods" target="function_frame"><i class="glyphicon glyphicon-file"></i> 物资信息管理</a></li>
+									<li><a href="${pageContext.request.contextPath}/warehouse/manageWarehouse" target="function_frame"><i class="glyphicon glyphicon-home"></i> 仓库信息管理</a></li>
 									<li><a href="${pageContext.request.contextPath }/supplier/manageSupplier" target="function_frame"><i class="glyphicon glyphicon-indent-left"></i> 供应商信息管理</a></li>
+								<%
+									}
+								%>
 								</ul>
 							</li>
 							<li>
@@ -51,10 +61,16 @@
 									<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 								</a>
 								<ul id="goodsManage" class="nav nav-list collapse secondmenu" style="height: 0px;">
-									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-arrow-down"></i> 物资入库</a></li>
-									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-arrow-up"></i> 物资出库</a></li>
+									<li><a href="${pageContext.request.contextPath }/addGoodsIntoWarehouse" target="function_frame"><i class="glyphicon glyphicon-arrow-down"></i> 物资入库</a></li>
+									<li><a href="${pageContext.request.contextPath }/addGoodsOutWarehouse" target="function_frame"><i class="glyphicon glyphicon-arrow-up"></i> 物资出库</a></li>
+								<%
+									if(level<=2){
+								%>
 									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-cloud-download"></i> 物资入库日志</a></li>
 									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-cloud-upload"></i> 物资出库日志</a></li>
+								<%
+									}
+								%>
 									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-info-sign"></i> 库存预警</a></li>
 								</ul>
 							</li>
@@ -65,8 +81,6 @@
 								</a>
 								<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
 								<%
-									String username=(String)session.getAttribute("username");
-									Integer level=(Integer)session.getAttribute("level");
 									if(level==1){
 								%>
 									<li><a href="${pageContext.request.contextPath }/addPerson" target="function_frame"><i class="glyphicon glyphicon-plus"></i> 仓库员工添加</a></li>

@@ -1,0 +1,29 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html,body{
+	height: 100%;
+	float: left;
+}
+
+*{
+	margin:0;
+	padding:0;
+}
+
+.login{
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.login_internal{
+	width:300px;
+	margin:0 320px;
+}

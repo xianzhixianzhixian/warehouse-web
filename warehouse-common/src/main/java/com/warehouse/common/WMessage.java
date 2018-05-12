@@ -63,4 +63,14 @@ public class WMessage implements Serializable {
 	 * 操作类型：登陆
 	 */
 	public static String MSG_OPREATION_LOGIN="登陆";
+	
+	/**
+	 * 操作类型：商品入库
+	 */
+	public static String MSG_OPREATION_ADD_GOODS="商品入库";
+	
+	/**
+	 * 操作类型：商品出库
+	 */
+	public static String MSG_OPREATION_OUT_GOODS="商品出库";
 }
