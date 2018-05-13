@@ -37,5 +37,5 @@ public interface LogService {
 	 * @param operationtype
 	 * @return
 	 */
-	public List<Log> selectLogByUsernameAndOperationType(String username,String operationtype);
+	public List<Log> selectLogByUsernameAndOperationType(String username,Integer level,String operationtype);
 }

@@ -137,7 +137,8 @@
 					data: {
 						"goodsNum": goodsnum,
 						"warehouseNum": warehousenum,
-						"containNumber": innum
+						"containNumber": innum,
+						"operation": "add"
 					},
 					success: function(response){
 						if(response.message=="success"){

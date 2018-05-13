@@ -75,11 +75,6 @@ public class WMessage implements Serializable {
 	public static final String MSG_OPREATION_OUT_GOODS="商品出库";
 	
 	/**
-	 * 更新库存信息
-	 */
-	public static final String MSG_OPREATION_UPDATE_GOODS = "更新库存信息";
-	
-	/**
 	 * 操作类型：添加配置
 	 */
 	public static final String MSG_OPREATION_ADD_CONFIG="添加配置";

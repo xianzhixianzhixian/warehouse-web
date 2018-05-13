@@ -67,8 +67,8 @@
 								<%
 									if(level<=2){
 								%>
-									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-cloud-download"></i> 物资入库日志</a></li>
-									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-cloud-upload"></i> 物资出库日志</a></li>
+									<li><a href="${pageContext.request.contextPath }/log/showInsertLog" target="function_frame"><i class="glyphicon glyphicon-cloud-download"></i> 物资入库日志</a></li>
+									<li><a href="${pageContext.request.contextPath }/log/showDeleteLog" target="function_frame"><i class="glyphicon glyphicon-cloud-upload"></i> 物资出库日志</a></li>
 								<%
 									}
 								%>

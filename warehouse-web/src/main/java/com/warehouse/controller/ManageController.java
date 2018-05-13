@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.warehouse.bean.Log;
@@ -83,7 +84,7 @@ public class ManageController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/addRecord", method = RequestMethod.POST)
-	public WResponse addRecord(WarehouseGoods record,HttpSession session) throws Exception {
+	public WResponse addRecord(WarehouseGoods record,HttpSession session,@RequestParam("operation") String operationTpye) throws Exception {
 		WResponse response=new WResponse();
 		String operation="";
 		Integer num=0;
@@ -91,7 +92,11 @@ public class ManageController {
 			operation=WMessage.MSG_OPREATION_ADD_GOODS;
 			num=manageService.insertRecord(record);
 		}else {
-			operation=WMessage.MSG_OPREATION_UPDATE_GOODS;
+			if(operationTpye.equals("add")) {
+				operation=WMessage.MSG_OPREATION_ADD_GOODS;
+			}else if(operationTpye.equals("remove")) {
+				operation=WMessage.MSG_OPREATION_OUT_GOODS;
+			}
 			num=manageService.updateRecord(record);
 		}
 		if(num>0) {

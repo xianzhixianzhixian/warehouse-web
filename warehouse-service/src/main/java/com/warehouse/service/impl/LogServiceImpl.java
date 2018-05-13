@@ -41,13 +41,20 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public List<Log> selectLogByUsernameAndOperationType(String username, String operationtype) {
-		LogExample example=new LogExample();
-		Criteria criteria=example.createCriteria();
-		criteria.andOperatorNameEqualTo(username);
-		criteria.andOperationTypeEqualTo(operationtype);
-		return logMapper.selectByExample(example);
+	public List<Log> selectLogByUsernameAndOperationType(String username,Integer level,String operationtype) {
+		
+		if(level==1) {
+			LogExample example=new LogExample();
+			Criteria criteria=example.createCriteria();
+			criteria.andOperationTypeEqualTo(operationtype);
+			return logMapper.selectByExample(example);
+		}else if(level==2) {
+			LogExample example=new LogExample();
+			Criteria criteria=example.createCriteria();
+			criteria.andOperatorNameEqualTo(username);
+			criteria.andOperationTypeEqualTo(operationtype);
+			return logMapper.selectByExample(example);
+		}
+		return null;
 	}
-	
-	
 }
