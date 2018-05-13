@@ -11,9 +11,6 @@
 		<link href="css/addGoodsIntoWarehouse.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
-		<%
-			Integer level=(Integer)session.getAttribute("level");
-		%>
 		<div class="login">
 			<div class="login_internal">
 				<form class="form-horizontal">
@@ -30,7 +27,7 @@
 					</div>
 					<div class="form-group">	
 						<label for="inNum" class="form-label">入库数量</label>
-						<input type="text" class="form-control" id="inNum" name="innum" placeholder="入库数量">
+						<input type="text" class="form-control" id="inNum" name="innum" onclick="getWarehouseGoodsNumInfo();" placeholder="入库数量">
 					</div>
 					<div class="form-group">	
 						<label for="savedNum" class="form-label">已存该种物资数量</label>
@@ -49,7 +46,7 @@
 						<input type="text" class="form-control" id="topLine" name="topline" placeholder="最高库存预警值" disabled="disabled">
 					</div>
 					<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;">
-						<button type="button" class="btn btn-primary btn-block" style="font-size:16px;font-weight: 700;" onclick="addGoods();">入库</button>
+						<button type="button" class="btn btn-primary btn-block" style="font-size:16px;font-weight: 700;" onclick="addGoodsIntoWarehouse();">入库</button>
 					</div>
 					<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;margin-left: 45px;">
 					    <button type="reset" class="btn btn-default btn-block" style="font-size:16px;font-weight: 700;">取消</button>
@@ -93,58 +90,65 @@
 		function changeWarehouseName(){
 			$("#warehousename").val($("#selectWarehouseNum").find("option:selected").val());
 		}
-	</script>
-	<%
-		if(level==1){
-	%>
-		<script type="text/javascript">
-			
-		</script>
-	<%
-		}else{
-	%>
-		<script type="text/javascript">
-			function addConfig(){
-				var goodsnum=$("#selectGoodsNum").find("option:selected").val().trim();
-				var goodsname=$("#goodsname").val().trim();
-				var warehousenum=$("#selectWarehouseNum").find("option:selected").val().trim();
-				var warehousename=$("#warehousename").val().trim();
-				var bottomline=$("#bottomLine").val().trim();
-				var topline=$("#topLine").val().trim();
-				if(goodsnum=='' || goodsnum==null 
-					|| goodsname=='' || goodsname==null
-					|| extension=='' || extension==null
-					|| price=='' || price==null)
-				{
-					alert("请输入完整信息，备注字段可以不填写");
-					return false;
-				}else{
-					$.ajax({
-						url: "manage/addConfig",
-						type: "post",
-						data: {
-							"num": goodsnum,
-							"name": goodsname,
-							"extendsParts": extension,
-							"price": price,
-							"remark": remark
-						},
-						success: function(response){
-							if(response.message=="success"){
-								alert("添加物资信息成功");
-							}else if(response.message=="fail"){
-								alert("添加物资信息失败");
-								return;
-							}else if(response.message=="goods_exists"){
-								alert("该物资信息已存在，可以进入物资信息管理页面进行管理");
-								return;
-							}
-						}
-					});
+		
+		function getWarehouseGoodsNumInfo(){
+			var goodsnum=$("#selectGoodsNum").find("option:selected").text();
+			var warehousenum=$("#selectWarehouseNum").find("option:selected").text();
+			$.ajax({
+				url: "manage/getWarehouseGoodsNumInfo",
+				type: "get",
+				data: {
+					"goodsNum": goodsnum,
+					"warehouseNum": warehousenum
+				},
+				success: function(response){
+					if(response.message=="success"){
+						var info=response.object;
+						$("#savedNum").val(info.containNumber);
+						$("#canSaveNum").val(info.topmost-info.containNumber);
+						$("#bottomLine").val(info.bottommost);
+						$("#topLine").val(info.topmost);
+					}else if(response.message=="fail"){
+						alert("该仓库和商品的关联信息未配置，请管理员进行配置之后再进行入库或出库操作");
+					}
 				}
-			}
-		</script>
-	<%
+			});
 		}
-	%>
+		
+		function addGoodsIntoWarehouse(){
+			var goodsnum=$("#selectGoodsNum").find("option:selected").text();
+			var warehousenum=$("#selectWarehouseNum").find("option:selected").text();
+			var innum=Number($("#inNum").val().trim());
+			var leftcontain=Number($("#canSaveNum").val().trim());
+			if(goodsnum=='' || goodsnum==null 
+				|| warehousenum=='' || warehousenum==null
+				|| innum=='' || innum==null)
+			{
+				alert("请输入完整信息");
+				return false;
+			}else if(leftcontain<innum){
+				alert("入库数量不能高于剩余容量");
+				return false;
+			}else{
+				innum=innum+Number($("#savedNum").val().trim());
+				$.ajax({
+					url: "manage/addRecord",
+					type: "post",
+					data: {
+						"goodsNum": goodsnum,
+						"warehouseNum": warehousenum,
+						"containNumber": innum
+					},
+					success: function(response){
+						if(response.message=="success"){
+							alert("物资入库成功");
+						}else if(response.message=="fail"){
+							alert("物资入库失败");
+							return;
+						}
+					}
+				});
+			}
+		}
+	</script>
 </html>

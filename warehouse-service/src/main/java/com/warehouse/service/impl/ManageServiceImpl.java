@@ -62,8 +62,17 @@ public class ManageServiceImpl implements ManageService {
 	public Integer updateRecord(WarehouseGoods record) throws Exception {
 		WarehouseGoodsExample example=new WarehouseGoodsExample();
 		Criteria criteria=example.createCriteria();
-		criteria.andGoodsNameEqualTo(record.getGoodsNum());
+		criteria.andGoodsNumEqualTo(record.getGoodsNum());
 		criteria.andWarehouseNumEqualTo(record.getWarehouseNum());
 		return warehouseGoodsMapper.updateByExampleSelective(record, example);
+	}
+
+	@Override
+	public List<WarehouseGoods> getWarehouseGoodsNumInfo(String goodsNum, String warehouseNum) throws Exception {
+		WarehouseGoodsExample example=new WarehouseGoodsExample();
+		Criteria criteria=example.createCriteria();
+		criteria.andGoodsNumEqualTo(goodsNum);
+		criteria.andWarehouseNumEqualTo(warehouseNum);
+		return warehouseGoodsMapper.selectByExample(example);
 	}
 }

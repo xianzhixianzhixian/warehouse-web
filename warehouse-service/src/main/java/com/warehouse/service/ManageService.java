@@ -38,4 +38,13 @@ public interface ManageService {
 	 * @return
 	 */
 	public Integer updateRecord(WarehouseGoods record) throws Exception;
+	
+	/**
+	 * 根据商品编号和仓库编号获取库存相关信息
+	 * @param goodsNum
+	 * @param warehouseNum
+	 * @return
+	 * @throws Exception
+	 */
+	public List<WarehouseGoods> getWarehouseGoodsNumInfo(String goodsNum,String warehouseNum) throws Exception;
 }

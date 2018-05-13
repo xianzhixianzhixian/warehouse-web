@@ -11,9 +11,6 @@
 		<link href="css/configGoodsWarehouse.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
-		<%
-			Integer level=(Integer)session.getAttribute("level");
-		%>
 		<div class="login">
 			<div class="login_internal">
 				<form class="form-horizontal">
@@ -81,58 +78,44 @@
 		function changeWarehouseName(){
 			$("#warehousename").val($("#selectWarehouseNum").find("option:selected").val());
 		}
-	</script>
-	<%
-		if(level==1){
-	%>
-		<script type="text/javascript">
-			
-		</script>
-	<%
-		}else{
-	%>
-		<script type="text/javascript">
-			function addConfig(){
-				var goodsnum=$("#selectGoodsNum").find("option:selected").val().trim();
-				var goodsname=$("#goodsname").val().trim();
-				var warehousenum=$("#selectWarehouseNum").find("option:selected").val().trim();
-				var warehousename=$("#warehousename").val().trim();
-				var bottomline=$("#bottomLine").val().trim();
-				var topline=$("#topLine").val().trim();
-				if(goodsnum=='' || goodsnum==null 
-					|| goodsname=='' || goodsname==null
-					|| extension=='' || extension==null
-					|| price=='' || price==null)
-				{
-					alert("请输入完整信息，备注字段可以不填写");
-					return false;
-				}else{
-					$.ajax({
-						url: "manage/addConfig",
-						type: "post",
-						data: {
-							"num": goodsnum,
-							"name": goodsname,
-							"extendsParts": extension,
-							"price": price,
-							"remark": remark
-						},
-						success: function(response){
-							if(response.message=="success"){
-								alert("添加物资信息成功");
-							}else if(response.message=="fail"){
-								alert("添加物资信息失败");
-								return;
-							}else if(response.message=="goods_exists"){
-								alert("该物资信息已存在，可以进入物资信息管理页面进行管理");
-								return;
-							}
+		
+		function addConfig(){
+			var goodsnum=$("#selectGoodsNum").find("option:selected").text();
+			var goodsname=$("#goodsname").val().trim();
+			var warehousenum=$("#selectWarehouseNum").find("option:selected").text();
+			var warehousename=$("#warehousename").val().trim();
+			var bottomline=$("#bottomLine").val().trim();
+			var topline=$("#topLine").val().trim();
+			if(bottomline=='' || bottomline==null
+				|| topline=='' || topline==null)
+			{
+				alert("请输入完整信息");
+				return false;
+			}else if(bottomline<0 || topline<0){
+				alert("库存数量配置不能低于0");
+				return false;
+			}else{
+				$.ajax({
+					url: "manage/addConfig",
+					type: "post",
+					data: {
+						"goodsNum": goodsnum,
+						"goodsName": goodsname,
+						"warehouseNum": warehousenum,
+						"warehouseName": warehousename,
+						"bottommost": bottomline,
+						"topmost": topline
+					},
+					success: function(response){
+						if(response.message=="success"){
+							alert("配置成功");
+						}else if(response.message=="fail"){
+							alert("配置失败");
+							return;
 						}
-					});
-				}
+					}
+				});
 			}
-		</script>
-	<%
 		}
-	%>
+	</script>
 </html>
