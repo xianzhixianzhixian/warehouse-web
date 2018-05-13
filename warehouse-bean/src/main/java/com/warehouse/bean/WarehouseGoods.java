@@ -264,4 +264,11 @@ public class WarehouseGoods {
     public void setTopmost(Long topmost) {
         this.topmost = topmost;
     }
+
+	@Override
+	public String toString() {
+		return "WarehouseGoods [goodsNum=" + goodsNum + ", goodsName=" + goodsName + ", warehouseNum=" + warehouseNum
+				+ ", warehouseName=" + warehouseName + ", containNumber=" + containNumber + ", bottommost=" + bottommost
+				+ ", topmost=" + topmost + "]";
+	}
 }

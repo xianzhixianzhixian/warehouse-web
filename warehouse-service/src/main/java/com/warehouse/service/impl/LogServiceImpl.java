@@ -37,8 +37,7 @@ public class LogServiceImpl implements LogService {
 
 	@Override
 	public List<Log> selectAllLog() {
-		LogExample example=new LogExample();
-		return logMapper.selectByExample(example);
+		return logMapper.selectByExample(null);
 	}
 
 	@Override

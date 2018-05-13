@@ -3,6 +3,7 @@ package com.warehouse.service;
 import java.util.List;
 
 import com.warehouse.bean.Goods;
+import com.warehouse.bean.WarehouseGoods;
 
 public interface GoodsService {
 

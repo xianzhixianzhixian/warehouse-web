@@ -8,7 +8,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/bootstrap-select.min.js"></script>
 		<link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
-		<link href="css/addGoodsIntoWarehouse.css" rel="stylesheet" type="text/css"/>
+		<link href="css/configGoodsWarehouse.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<%
@@ -17,7 +17,7 @@
 		<div class="login">
 			<div class="login_internal">
 				<form class="form-horizontal">
-					<h2 class="text-center">物资入库</h2>
+					<h2 class="text-center">仓库配置</h2>
 					<div class="form-group">
 						<label for="selectGoodsNum">物资选择&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 						<select id="selectGoodsNum" name="goodsnum" class="selectpicker" onchange="changeGoodsName(this)"></select>
@@ -28,28 +28,16 @@
 						<select id="selectWarehouseNum" name="warehousenum" class="selectpicker" onchange="changeWarehouseName(this)"></select>
 						<input type="text" class="form-control" id="warehousename" name="warehouse_name" placeholder="仓库名称" disabled="disabled">
 					</div>
-					<div class="form-group">	
-						<label for="inNum" class="form-label">入库数量</label>
-						<input type="text" class="form-control" id="inNum" name="innum" placeholder="入库数量">
-					</div>
-					<div class="form-group">	
-						<label for="savedNum" class="form-label">已存该种物资数量</label>
-						<input type="text" class="form-control" id="savedNum" name="savednum" placeholder="已存该种商品数量" disabled="disabled">
+					<div class="form-group">
+						<label for="bottomLine" class="form-label">最低库存预警值配置</label>
+						<input type="text" class="form-control" id="bottomLine" name="bottomline" placeholder="最低库存预警值配置">
 					</div>
 					<div class="form-group">
-						<label for="canSaveNum" class="form-label">可存该种物资数量</label>
-						<input type="text" class="form-control" id="canSaveNum" name="cansavenum" placeholder="剩余可存该种物资量" disabled="disabled">
-					</div>
-					<div class="form-group">
-						<label for="bottomLine" class="form-label">最低库存预警值</label>
-						<input type="text" class="form-control" id="bottomLine" name="bottomline" placeholder="最低库存预警值" disabled="disabled">
-					</div>
-					<div class="form-group">
-						<label for="topLine" class="form-label">最高库存预警值</label>
-						<input type="text" class="form-control" id="topLine" name="topline" placeholder="最高库存预警值" disabled="disabled">
+						<label for="topLine" class="form-label">最高库存预警值配置</label>
+						<input type="text" class="form-control" id="topLine" name="topline" placeholder="最高库存预警值配置" required>
 					</div>
 					<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;">
-						<button type="button" class="btn btn-primary btn-block" style="font-size:16px;font-weight: 700;" onclick="addGoods();">入库</button>
+				    	<button type="button" class="btn btn-primary btn-block" style="font-size:16px;font-weight: 700;" onclick="addConfig();">配置</button>
 					</div>
 					<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;margin-left: 45px;">
 					    <button type="reset" class="btn btn-default btn-block" style="font-size:16px;font-weight: 700;">取消</button>

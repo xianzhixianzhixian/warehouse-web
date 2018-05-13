@@ -61,6 +61,7 @@
 									<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 								</a>
 								<ul id="goodsManage" class="nav nav-list collapse secondmenu" style="height: 0px;">
+									<li><a href="${pageContext.request.contextPath }/configGoodsWarehouse" target="function_frame"><i class="glyphicon glyphicon-cog"></i> 物资仓库配置</a></li>
 									<li><a href="${pageContext.request.contextPath }/addGoodsIntoWarehouse" target="function_frame"><i class="glyphicon glyphicon-arrow-down"></i> 物资入库</a></li>
 									<li><a href="${pageContext.request.contextPath }/addGoodsOutWarehouse" target="function_frame"><i class="glyphicon glyphicon-arrow-up"></i> 物资出库</a></li>
 								<%

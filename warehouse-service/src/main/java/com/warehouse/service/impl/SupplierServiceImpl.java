@@ -46,9 +46,7 @@ public class SupplierServiceImpl implements SupplierService {
 
 	@Override
 	public List<Supplier> getAllSupplier() throws Exception {
-		SupplierExample example=new SupplierExample();
-		Criteria criteria=example.createCriteria();
-		return supplierMapper.selectByExample(example);
+		return supplierMapper.selectByExample(null);
 	}
 
 	@Override

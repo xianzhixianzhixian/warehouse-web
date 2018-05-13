@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import com.warehouse.bean.Goods;
 import com.warehouse.bean.GoodsExample;
 import com.warehouse.bean.GoodsExample.Criteria;
+import com.warehouse.bean.WarehouseGoods;
+import com.warehouse.bean.WarehouseGoodsExample;
 import com.warehouse.mapper.GoodsMapper;
+import com.warehouse.mapper.WarehouseGoodsMapper;
 import com.warehouse.service.GoodsService;
 
 @Service
@@ -45,8 +48,7 @@ public class GoodsServiceImpl implements GoodsService {
 
 	@Override
 	public List<Goods> getAllGoods() throws Exception {
-		GoodsExample example=new GoodsExample();
-		return goodsMapper.selectByExample(example);
+		return goodsMapper.selectByExample(null);
 	}
 
 }
