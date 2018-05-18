@@ -93,4 +93,12 @@ public interface GoodsMapper {
      * @mbg.generated Wed Apr 25 17:07:20 CST 2018
      */
     int updateByPrimaryKey(Goods record);
+    
+    /**
+     * 根据搜索关键字搜索物资
+     * @param words
+     * @param type
+     * @return
+     */
+    List<Goods> selectGoodsByWordsAndType(@Param("words") String words,@Param("type") String type);
 }

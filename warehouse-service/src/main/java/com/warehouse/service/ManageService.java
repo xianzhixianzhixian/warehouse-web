@@ -3,6 +3,7 @@ package com.warehouse.service;
 import java.util.List;
 import java.util.Map;
 
+import com.warehouse.bean.Goods;
 import com.warehouse.bean.WarehouseGoods;
 
 /**
@@ -47,4 +48,12 @@ public interface ManageService {
 	 * @throws Exception
 	 */
 	public List<WarehouseGoods> getWarehouseGoodsNumInfo(String goodsNum,String warehouseNum) throws Exception;
+	
+	/**
+	 * 根据搜索关键字和搜索类型查询物资数据（模糊查询或精确查询）
+	 * @param words
+	 * @param type
+	 * @return
+	 */
+	public List<Goods> selectGoodsByType(String words,String type) throws Exception;
 }

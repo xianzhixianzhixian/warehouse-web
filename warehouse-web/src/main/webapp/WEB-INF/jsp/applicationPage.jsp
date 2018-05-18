@@ -51,7 +51,7 @@
 									<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 								</a>
 								<ul id="searchAndAnalyse" class="nav nav-list collapse secondmenu" style="height: 0px;">
-									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-search"></i> 物资查询</a></li>
+									<li><a href="${pageContext.request.contextPath }/manage/goodsSelect" target="function_frame"><i class="glyphicon glyphicon-search"></i> 物资查询</a></li>
 									<li><a href="#" target="function_frame"><i class="glyphicon glyphicon-file"></i> 物资统计</a></li>
 								</ul>
 							</li>
@@ -100,7 +100,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="#aboutSystem" class="nav-header collapsed" data-toggle="collapse">
+								<a href="#aboutSystem" class="nav-header collapsed" data-toggle=."collapse">
 									<i class="glyphicon glyphicon-qrcode"></i> 关于系统
 									<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 								</a>

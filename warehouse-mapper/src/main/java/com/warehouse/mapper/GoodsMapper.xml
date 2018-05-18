@@ -347,4 +347,27 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <!-- 自定义语句 -->
+  <select id="selectGoodsByWordsAndType" resultMap="BaseResultMap">
+  	select distinct
+    <include refid="Base_Column_List" />
+    from goods
+    <choose>
+    	<when test='words != null and type != null and type == "specific"'>
+    		where num = #{words,jdbcType=VARCHAR} or 
+    		name = #{words,jdbcType=VARCHAR} or 
+    		extends_parts = #{words,jdbcType=VARCHAR} or 
+    		price = #{words,jdbcType=VARCHAR} or 
+    		remark = #{words,jdbcType=VARCHAR}
+    	</when>
+    	<when test='words != null and type != null and type == "approximate"'>
+    		where num like "%"#{words,jdbcType=VARCHAR}"%" or 
+    		name like "%"#{words,jdbcType=VARCHAR}"%" or 
+    		extends_parts like "%"#{words,jdbcType=VARCHAR}"%" or 
+    		price like "%"#{words,jdbcType=VARCHAR}"%" or 
+    		remark like "%"#{words,jdbcType=VARCHAR}"%"
+    	</when>
+    </choose>
+  </select>
 </mapper>

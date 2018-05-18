@@ -7,12 +7,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.warehouse.bean.Goods;
 import com.warehouse.bean.Log;
 import com.warehouse.bean.WarehouseGoods;
 import com.warehouse.common.WMessage;
@@ -130,6 +132,35 @@ public class ManageController {
 			response.setObject(list.get(0));
 		}
 		
+		return response;
+	}
+	
+	@RequestMapping(value = "/goodsSelect", method = RequestMethod.GET)
+	public String goodsSelect(HttpSession session,Model model) throws Exception {
+		if (session.getAttribute("username")==null) {
+			return "error";
+		}
+		List<Goods> goodslist=manageService.selectGoodsByType(null, null);
+		model.addAttribute("goodslist", goodslist);
+		return "goodsSelect";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/selectGoodsByType", method = RequestMethod.GET)
+	public WResponse selectGoodsByType(String words,String type) throws Exception {
+		WResponse response=new WResponse();
+		List<Goods> goodslist=null;
+		if(words==null) {
+			goodslist=manageService.selectGoodsByType(null, null);
+		}else {
+			goodslist=manageService.selectGoodsByType(words, type);
+		}
+		if(goodslist==null || goodslist.size()==0) {
+			response.setMessage(WMessage.MSG_FAIL);
+		}else if(goodslist!=null && goodslist.size()>0) {
+			response.setMessage(WMessage.MSG_SUCCESS);
+			response.setObject(goodslist);
+		}
 		return response;
 	}
 }

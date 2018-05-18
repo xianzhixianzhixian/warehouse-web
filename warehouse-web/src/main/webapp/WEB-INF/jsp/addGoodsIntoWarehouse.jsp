@@ -17,12 +17,12 @@
 					<h2 class="text-center">物资入库</h2>
 					<div class="form-group">
 						<label for="selectGoodsNum">物资选择&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-						<select id="selectGoodsNum" name="goodsnum" class="selectpicker" onchange="changeGoodsName(this)"></select>
+						<select id="selectGoodsNum" name="goodsnum" class="selectpicker show-tick" onchange="changeGoodsName(this)"></select>
 						<input type="text" class="form-control" id="goodsname" name="goods_name" placeholder="物资名称"  disabled="disabled">
 					</div>
 					<div class="form-group">
 						<label for="selectWarehouseNum" class="form-label">仓库选择&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-						<select id="selectWarehouseNum" name="warehousenum" class="selectpicker" onchange="changeWarehouseName(this)"></select>
+						<select id="selectWarehouseNum" name="warehousenum" class="selectpicker show-tick" onchange="changeWarehouseName(this)"></select>
 						<input type="text" class="form-control" id="warehousename" name="warehouse_name" placeholder="仓库名称" disabled="disabled">
 					</div>
 					<div class="form-group">	

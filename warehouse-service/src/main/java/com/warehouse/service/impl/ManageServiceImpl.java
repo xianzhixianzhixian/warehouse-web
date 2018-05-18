@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.warehouse.bean.Goods;
+import com.warehouse.bean.GoodsExample;
 import com.warehouse.bean.Warehouse;
 import com.warehouse.bean.WarehouseGoods;
 import com.warehouse.bean.WarehouseGoodsExample;
@@ -74,5 +75,14 @@ public class ManageServiceImpl implements ManageService {
 		criteria.andGoodsNumEqualTo(goodsNum);
 		criteria.andWarehouseNumEqualTo(warehouseNum);
 		return warehouseGoodsMapper.selectByExample(example);
+	}
+
+	@Override
+	public List<Goods> selectGoodsByType(String words, String type) throws Exception {
+		if(words==null || words.length()==0) {
+			return goodsMapper.selectByExample(null);
+		}else{
+			return goodsMapper.selectGoodsByWordsAndType(words, type);
+		}
 	}
 }

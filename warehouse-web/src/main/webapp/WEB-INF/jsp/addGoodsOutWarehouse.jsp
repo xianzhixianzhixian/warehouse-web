@@ -19,6 +19,12 @@
 						<label for="selectGoodsNum">物资选择&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 						<select id="selectGoodsNum" name="goodsnum" class="selectpicker" onchange="changeGoodsName(this)"></select>
 						<input type="text" class="form-control" id="goodsname" name="goods_name" placeholder="物资名称"  disabled="disabled">
+						<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;">
+							<button type="button" class="btn btn-primary btn-block" style="font-size:16px;font-weight: 700;" onclick="addGoodsIntoWarehouse();">搜索</button>
+						</div>
+						<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;margin-left: 45px;">
+						    <button type="reset" class="btn btn-default btn-block" style="font-size:16px;font-weight: 700;">重置</button>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="selectWarehouseNum" class="form-label">仓库选择&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
