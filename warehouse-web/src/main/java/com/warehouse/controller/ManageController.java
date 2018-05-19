@@ -163,4 +163,26 @@ public class ManageController {
 		}
 		return response;
 	}
+	
+	@RequestMapping(value = "/selectAllWarehouseGoods", method = RequestMethod.GET)
+	public String selectAllWarehouseGoods(HttpSession session,Model model) throws Exception {
+		if (session.getAttribute("username")==null) {
+			return "error";
+		}
+		
+		List<WarehouseGoods> warehousegoodslist=manageService.selectAllWarehouseGoods();
+		model.addAttribute("warehousegoodslist", warehousegoodslist);
+		return "goodsAnalyse";
+	}
+	
+	@RequestMapping(value = "/containWarning", method = RequestMethod.GET)
+	public String containWarning(HttpSession session,Model model) throws Exception {
+		if (session.getAttribute("username")==null) {
+			return "error";
+		}
+		
+		List<WarehouseGoods> warehousegoodslist=manageService.selectAllWarehouseGoods();
+		model.addAttribute("warehousegoodslist", warehousegoodslist);
+		return "containWarning";
+	}
 }

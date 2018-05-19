@@ -56,4 +56,10 @@ public interface ManageService {
 	 * @return
 	 */
 	public List<Goods> selectGoodsByType(String words,String type) throws Exception;
+	
+	/**
+	 * 从warehouse_goods表中获取所有记录
+	 * @return
+	 */
+	public List<WarehouseGoods> selectAllWarehouseGoods() throws Exception;
 }

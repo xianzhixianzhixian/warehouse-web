@@ -85,4 +85,9 @@ public class ManageServiceImpl implements ManageService {
 			return goodsMapper.selectGoodsByWordsAndType(words, type);
 		}
 	}
+
+	@Override
+	public List<WarehouseGoods> selectAllWarehouseGoods() throws Exception {
+		return warehouseGoodsMapper.selectByExample(null);
+	}
 }
