@@ -100,7 +100,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="#aboutSystem" class="nav-header collapsed" data-toggle=."collapse">
+								<a href="#aboutSystem" class="nav-header collapsed" data-toggle="collapse">
 									<i class="glyphicon glyphicon-qrcode"></i> 关于系统
 									<span class="pull-right glyphicon glyphicon-chevron-down"></span>
 								</a>
