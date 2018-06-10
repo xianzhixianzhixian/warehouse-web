@@ -3,6 +3,7 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ page language="java" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,9 +26,9 @@
 						<td name="responser">${warehouse.responser }</td>
 						<td name="responserphone">${warehouse.responserPhone }</td>
 						<td name="company">${warehouse.company }</td>
-						<td name="contractdate">${warehouse.contractDate }</td>
+						<td name="contractdate"><fmt:formatDate value="${warehouse.contractDate }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td name="operator">${warehouse.operator }</td>
-						<td name="operatetime">${warehouse.updateedAt }</td>
+						<td name="operatetime"><fmt:formatDate value="${warehouse.updateedAt }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td name="remark">${warehouse.remark }</td>
 						<td>
 							<button id="changeInfo">修 改</button>

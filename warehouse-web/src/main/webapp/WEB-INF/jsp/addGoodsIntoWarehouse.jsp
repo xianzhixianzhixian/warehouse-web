@@ -117,7 +117,9 @@
 		
 		function addGoodsIntoWarehouse(){
 			var goodsnum=$("#selectGoodsNum").find("option:selected").text();
+			var goodsname=$("#goodsname").val().trim();
 			var warehousenum=$("#selectWarehouseNum").find("option:selected").text();
+			var warehousename=$("#warehousename").val().trim();
 			var innum=Number($("#inNum").val().trim());
 			var leftcontain=Number($("#canSaveNum").val().trim());
 			if(goodsnum=='' || goodsnum==null 
@@ -136,7 +138,9 @@
 					type: "post",
 					data: {
 						"goodsNum": goodsnum,
+						"goodsName": goodsname,
 						"warehouseNum": warehousenum,
+						"warehouseName": warehousename,
 						"containNumber": innum,
 						"operation": "add"
 					},

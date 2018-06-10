@@ -3,6 +3,7 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ page language="java" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,7 +22,7 @@
 				<c:forEach items="${loglist}" var="log">
 					<tr>
 						<td>${log.operatorName }</td>
-						<td>${log.opreatorTime }</td>
+						<td><fmt:formatDate value="${log.opreatorTime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td>${log.operationType }</td>
 						<td>${log.operationDetail }</td>
 					</tr>

@@ -3,6 +3,7 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ page language="java" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,8 +32,8 @@
 						</td>
 						<td name="password"></td>
 						<td name="remark">${user.remark }</td>
-						<td name="createAt">${user.createdAt }</td>
-						<td name="updateAt">${user.updatedAt }</td>
+						<td name="createAt"><fmt:formatDate value="${user.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td name="updateAt"><fmt:formatDate value="${user.updatedAt }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td>
 							<button id="changeInfo">修 改</button> <button id="deleteInfo">删 除</button>
 						</td>

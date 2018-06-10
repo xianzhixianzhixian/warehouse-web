@@ -42,19 +42,19 @@ public class LogServiceImpl implements LogService {
 
 	@Override
 	public List<Log> selectLogByUsernameAndOperationType(String username,Integer level,String operationtype) {
-		
+		List<Log> loglist=null;
 		if(level==1) {
 			LogExample example=new LogExample();
 			Criteria criteria=example.createCriteria();
 			criteria.andOperationTypeEqualTo(operationtype);
-			return logMapper.selectByExample(example);
+			loglist=logMapper.selectByExample(example);
 		}else if(level==2) {
 			LogExample example=new LogExample();
 			Criteria criteria=example.createCriteria();
 			criteria.andOperatorNameEqualTo(username);
 			criteria.andOperationTypeEqualTo(operationtype);
-			return logMapper.selectByExample(example);
+			loglist=logMapper.selectByExample(example);
 		}
-		return null;
+		return loglist;
 	}
 }

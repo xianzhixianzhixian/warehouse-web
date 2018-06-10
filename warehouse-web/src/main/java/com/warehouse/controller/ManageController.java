@@ -78,7 +78,13 @@ public class ManageController {
 				"用户： "+session.getAttribute("username")
 				+" 等级： "+session.getAttribute("level")
 				+" 于 "+TimeUtil.getNowerTime()
-				+" 配置物资仓库： "+config.toString()
+				+" 配置物资仓库： "
+				+" 仓库编号： "+config.getWarehouseNum()
+				+" 仓库名： "+config.getWarehouseName()
+				+" 物资编号： "+config.getGoodsNum()
+				+" 物资名： "+config.getGoodsName()
+				+" 最低库存： "+config.getBottommost()
+				+" 最高库存： "+config.getTopmost()
 				+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		return response;
@@ -112,7 +118,12 @@ public class ManageController {
 				"用户： "+session.getAttribute("username")
 				+" 等级： "+session.getAttribute("level")
 				+" 于 "+TimeUtil.getNowerTime()
-				+" 操作物资入库： "+record.toString()
+				+" 操作物资： "
+				+" 仓库编号： "+record.getWarehouseNum()
+				+" 仓库名： "+record.getWarehouseName()
+				+" 物资编号： "+record.getGoodsNum()
+				+" 物资名： "+record.getGoodsName()
+				+" 库存数量： "+record.getContainNumber()
 				+" 结果： "+ response.getMessage());
 		log.setOperatorNum(record.getContainNumber().toString());
 		logService.insertLog(log);

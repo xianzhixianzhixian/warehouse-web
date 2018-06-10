@@ -19,12 +19,6 @@
 						<label for="selectGoodsNum">物资选择&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 						<select id="selectGoodsNum" name="goodsnum" class="selectpicker" onchange="changeGoodsName(this)"></select>
 						<input type="text" class="form-control" id="goodsname" name="goods_name" placeholder="物资名称"  disabled="disabled">
-						<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;">
-							<button type="button" class="btn btn-primary btn-block" style="font-size:16px;font-weight: 700;" onclick="addGoodsIntoWarehouse();">搜索</button>
-						</div>
-						<div class="col-sm-offset-1 col-sm-4" style="margin-top: 10px;margin-left: 45px;">
-						    <button type="reset" class="btn btn-default btn-block" style="font-size:16px;font-weight: 700;">重置</button>
-						</div>
 					</div>
 					<div class="form-group">
 						<label for="selectWarehouseNum" class="form-label">仓库选择&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -33,7 +27,7 @@
 					</div>
 					<div class="form-group">	
 						<label for="inNum" class="form-label">出库数量</label>
-						<input type="text" class="form-control" id="inNum" name="innum" onclick="getWarehouseGoodsNumInfo();" placeholder="入库数量">
+						<input type="text" class="form-control" id="inNum" name="innum" onclick="getWarehouseGoodsNumInfo();" placeholder="出库数量">
 					</div>
 					<div class="form-group">	
 						<label for="savedNum" class="form-label">已存该种物资数量</label>
@@ -123,7 +117,9 @@
 		
 		function addGoodsIntoWarehouse(){
 			var goodsnum=$("#selectGoodsNum").find("option:selected").text();
+			var goodsname=$("#goodsname").val().trim();
 			var warehousenum=$("#selectWarehouseNum").find("option:selected").text();
+			var warehousename=$("#warehousename").val().trim();
 			var innum=Number($("#inNum").val().trim());
 			var leftcontain=Number($("#savedNum").val().trim());
 			if(goodsnum=='' || goodsnum==null 
@@ -142,7 +138,9 @@
 					type: "post",
 					data: {
 						"goodsNum": goodsnum,
+						"goodsName": goodsname,
 						"warehouseNum": warehousenum,
+						"warehouseName": warehousename,
 						"containNumber": innum,
 						"operation": "remove"
 					},

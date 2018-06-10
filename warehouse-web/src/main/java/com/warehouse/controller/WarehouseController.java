@@ -62,7 +62,14 @@ public class WarehouseController {
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
-									+" 添加仓库： "+warehouse.toString()
+									+" 添加仓库信息： "
+									+" 仓库编号： "+warehouse.getNum()
+									+" 仓库名： "+warehouse.getName()
+									+" 负责人： "+warehouse.getResponser()
+									+" 负责人电话： "+warehouse.getResponserPhone()
+									+" 合同签订日期： "+warehouse.getContractDate()
+									+" 所属公司： "+warehouse.getCompany()
+									+" 备注： "+warehouse.getRemark()
 									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
@@ -100,7 +107,13 @@ public class WarehouseController {
 				"用户： "+session.getAttribute("username")
 				+" 等级： "+session.getAttribute("level")
 				+" 于 "+TimeUtil.getNowerTime()
-				+" 更新仓库信息为： "+warehouse.toString()
+				+" 更新仓库信息为： "
+				+" 仓库编号： "+warehouse.getNum()
+				+" 仓库名： "+warehouse.getName()
+				+" 负责人： "+warehouse.getResponser()
+				+" 负责人电话： "+warehouse.getResponserPhone()
+				+" 所属公司： "+warehouse.getCompany()
+				+" 备注： "+warehouse.getRemark()
 				+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		

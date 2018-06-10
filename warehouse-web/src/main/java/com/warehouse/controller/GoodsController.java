@@ -56,7 +56,12 @@ public class GoodsController {
 				"用户： "+session.getAttribute("username")
 				+" 等级： "+session.getAttribute("level")
 				+" 于 "+TimeUtil.getNowerTime()
-				+" 添加物资信息： "+goods.toString()
+				+" 添加物资信息： "
+				+" 物资编号： "+goods.getNum()
+				+" 物资名称： "+goods.getName()
+				+" 物资配件： "+goods.getExtendsParts()
+				+" 物资价格(元/件)："+goods.getPrice()
+				+" 备注： "+goods.getRemark()
 				+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
@@ -91,7 +96,12 @@ public class GoodsController {
 				"用户： "+session.getAttribute("username")
 				+" 等级： "+session.getAttribute("level")
 				+" 于 "+TimeUtil.getNowerTime()
-				+" 更新物资信息： "+goods.toString()
+				+" 更新物资信息： "
+				+" 物资编号： "+goods.getNum()
+				+" 物资名称： "+goods.getName()
+				+" 物资配件： "+goods.getExtendsParts()
+				+" 物资价格(元/件)："+goods.getPrice()
+				+" 备注： "+goods.getRemark()
 				+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		

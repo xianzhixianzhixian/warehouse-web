@@ -1,5 +1,6 @@
 package com.warehouse.bean;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Goods {

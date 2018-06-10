@@ -3,6 +3,7 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ page language="java" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -27,7 +28,7 @@
 						<td name="responser">${supplier.responser }</td>
 						<td name="responserphone">${supplier.responserPhone }</td>
 						<td name="operator">${supplier.operator }</td>
-						<td name="operatetime">${supplier.updatetime }</td>
+						<td name="operatetime"><fmt:formatDate value="${supplier.updatetime }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td name="remark">${supplier.remark }</td>
 						<td>
 							<button id="changeInfo">修 改</button> <button id="deleteInfo">删 除</button>

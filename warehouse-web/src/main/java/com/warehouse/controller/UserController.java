@@ -56,7 +56,10 @@ public class UserController {
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
-									+" 添加用户： "+userinfo.toString()
+									+" 添加用户： "
+									+" 用户名： "+userinfo.getUsername()
+									+" 等级： "+userinfo.getLevel()
+									+" 备注： "+userinfo.getRemark()
 									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
@@ -126,7 +129,10 @@ public class UserController {
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
-									+" 更新用户信息为： "+userinfo.toString()
+									+" 更新用户信息为： "
+									+" 用户名： "+userinfo.getUsername()
+									+" 等级： "+userinfo.getLevel()
+									+" 备注： "+userinfo.getRemark()
 									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		

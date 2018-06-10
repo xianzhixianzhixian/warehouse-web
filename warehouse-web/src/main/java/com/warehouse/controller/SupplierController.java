@@ -55,7 +55,14 @@ public class SupplierController {
 									"用户： "+session.getAttribute("username")
 									+" 等级： "+session.getAttribute("level")
 									+" 于 "+TimeUtil.getNowerTime()
-									+" 添加供应商： "+supplier.toString()
+									+" 添加供应商： "
+									+" 编号： "+supplier.getNum()
+									+" 名称： "+supplier.getName()
+									+" 对接人： "+supplier.getReceiver()
+									+" 对接人联系方式： "+supplier.getReceiverPhone()
+									+" 负责人： "+supplier.getResponser()
+									+" 负责人联系方式： "+supplier.getResponserPhone()
+									+" 备注： "+supplier.getRemark()
 									+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
@@ -90,7 +97,14 @@ public class SupplierController {
 				"用户： "+session.getAttribute("username")
 				+" 等级： "+session.getAttribute("level")
 				+" 于 "+TimeUtil.getNowerTime()
-				+" 更新供应商： "+supplier.toString()
+				+" 更新供应商为： "
+				+" 编号： "+supplier.getNum()
+				+" 名称： "+supplier.getName()
+				+" 对接人： "+supplier.getReceiver()
+				+" 对接人联系方式： "+supplier.getReceiverPhone()
+				+" 负责人： "+supplier.getResponser()
+				+" 负责人联系方式： "+supplier.getResponserPhone()
+				+" 备注： "+supplier.getRemark()
 				+" 结果： "+ response.getMessage());
 		logService.insertLog(log);
 		
